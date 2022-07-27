@@ -25,5 +25,5 @@ int main(void)
 
 bool checksum(long number)
 {
-    
+    for(int i = 0; i < number.length)
 }
