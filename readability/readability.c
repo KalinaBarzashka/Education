@@ -45,15 +45,15 @@ int count_words(string text)
         }
     }
 
-    // if (text[0] == ' ')
-    // {
-    //     count--;
-    // }
+    if (text[0] == ' ')
+    {
+        count--;
+    }
 
-    // if (text[n - 1] == ' ')
-    // {
-    //     count--;
-    // }
+    if (text[n - 1] == ' ')
+    {
+        count--;
+    }
 
     //return count + 1 for the last word in the sentance
     return count + 1;
