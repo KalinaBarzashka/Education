@@ -12,7 +12,7 @@ int main(void)
     //checksum
 
     long card_number = get_long("Number: ");
-    bool valid = checksum(number);
+    bool valid = checksum(card_number);
 
     if (!valid)
     {
@@ -26,6 +26,12 @@ int main(void)
 
 bool checksum(long number)
 {
-    int length_of_number = floor(log10(abs(number))) + 1;
-    for (int i = 0; i < number.length)
+    int length_of_number = floor(log10(number)) + 1;
+    printf("%i", length_of_number);
+    for (int i = 0; i < length_of_number; i++)
+    {
+
+    }
+
+    return false;
 }
