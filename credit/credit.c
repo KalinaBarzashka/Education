@@ -12,9 +12,11 @@ int main(void)
     //checksum
 
     long card_number = get_long("Number: ");
-    string card_str = card_number;
     //get length of number
     int length_of_number = floor(log10(number)) + 1;
+
+    //get first and second numbers
+    int first_num = card_number / (10 * (length_of_number - 1));
 
     bool valid = checksum(card_number, length_of_number);
 
