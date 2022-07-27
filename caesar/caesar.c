@@ -68,7 +68,7 @@ char rotate(char symbol, int key)
         int symbol_ascii = (int)symbol;
         //get letter number (number between 0 and 25 - 26 letters total)
         int letter_count = symbol_ascii - 65;
-        
+        int sum = (letter_count + key) % 65;
     }
     else if (islower(symbol))
     {
