@@ -4,6 +4,7 @@
 #include <stdlib.h>
 
 bool only_digits (string key, int key_length);
+char rotate(char symbol, int key);
 
 int main(int argc, string argv[])
 {
@@ -15,9 +16,9 @@ int main(int argc, string argv[])
     }
 
     int key_length = strlen(argv[1]);
-    string key = argv[1];
+    string key_as_str = argv[1];
     //ckeck if key got only digits!
-    if(!only_digits(key, key_length))
+    if(!only_digits(key_as_str, key_length))
     {
         printf("Usage: ./caesar key\n");
         return 1;
@@ -36,10 +37,8 @@ int main(int argc, string argv[])
     //iterate over every character
     for (int i = 0; i < length; i++)
     {
-        if (isalpha(plain_text[i]))
-        {
-            cipher_text[i] = '';
-        }
+        char symbol = plain_text[i];
+        cipher_text[i] = rotate(symbol, key);
     }
 
     printf("ciphertext: %s\n", cipher_text);
@@ -59,4 +58,14 @@ bool only_digits(string key, int key_length)
 
     //if every character is a digit - ok, return true
     return true;
+}
+
+char rotate(char symbol, int key)
+{
+    if (isalpha(symbol))
+    {
+
+    }
+
+    return symbol;
 }
