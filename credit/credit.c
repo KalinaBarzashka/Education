@@ -3,8 +3,8 @@
 #include <math.h>
 
 bool checksum(long number, int length_of_number);
-int get_first_number(long number);
-int get_second_number(long number);
+int get_first_number(long card_number, int length);
+int get_second_number(long card_number, int length);
 
 int main(void)
 {
@@ -18,11 +18,8 @@ int main(void)
     int length_of_number = floor(log10(card_number)) + 1;
 
     //get first and second numbers
-    int first_number = get_first_number(length_of_number);
-    int second_number = get_second_number(length_of_number);
-    printf("%i\n", length_of_number);
-    printf("%i\n", first_number);
-    printf("%i\n", second_number);
+    int first_number = get_first_number(card_number, length_of_number);
+    int second_number = get_second_number(card_number, length_of_number);
 
     bool valid = checksum(card_number, length_of_number);
 
@@ -83,24 +80,24 @@ bool checksum(long number, int length_of_number)
     return false;
 }
 
-int get_first_number(long number)
+int get_first_number(long card_number, int length)
 {
     long division = 1;
-    for (int i = 0; i < number - 1; i++)
+    for (int i = 0; i < length - 1; i++)
     {
         division = division * 10;
     }
-    printf("division: %li\n", division);
-    return number / division;
+
+    return card_number / division;
 }
 
-int get_second_number(long number)
+int get_second_number(long card_number, int length)
 {
     long division = 1;
-    for (int i = 0; i < number - 2; i++)
+    for (int i = 0; i < length - 2; i++)
     {
         division = division * 10;
     }
 
-    return number / division;
+    return (card_number / division) % 10;
 }
