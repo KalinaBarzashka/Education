@@ -3,6 +3,8 @@
 #include <math.h>
 
 bool checksum(long number, int length_of_number);
+int get_first_number(long number);
+int get_second_number(long number);
 
 int main(void)
 {
@@ -13,24 +15,25 @@ int main(void)
 
     long card_number = get_long("Number: ");
     //get length of number
-    int length_of_number = floor(log10(number)) + 1;
+    int length_of_number = floor(log10(card_number)) + 1;
 
     //get first and second numbers
-    int first_num = card_number / (10 * (length_of_number - 1));
+    int first_number = get_first_number(card_number);
+    int second_number = get_second_number(card_number);
 
     bool valid = checksum(card_number, length_of_number);
 
     if (valid)
     {
-        if (length_of_number == 15 && card_str[0] == 2 && (card_str[1] == 4 || card_str[1] == 7))
+        if (length_of_number == 15 && first_number == 2 && (second_number == 4 || second_number == 7))
         {
             printf("AMEX\n");
         }
-        else if ((length_of_number == 13 || length_of_number == 16) && card_str[0] == 4)
+        else if ((length_of_number == 13 || length_of_number == 16) && first_number == 4)
         {
             printf("VISA\n");
         }
-        else if (length_of_number == 16 && card_str[0] == 5 && (card_str[1] == 1 || card_str[1] == 2 || card_str[1] == 3 || card_str[1] == 4 || card_str[1] == 5))
+        else if (length_of_number == 16 && first_number == 5 && (second_number == 1 || second_number == 2 || second_number == 3 || second_number == 4 || second_number == 5))
         {
             printf("MASTERCARD\n");
         }
@@ -52,8 +55,6 @@ bool checksum(long number, int length_of_number)
 
     //sum of other digits
     int sum_not_multiplied = 0;
-
-    int
 
     for (int i = 0; i < length_of_number; i++)
     {
@@ -77,4 +78,26 @@ bool checksum(long number, int length_of_number)
     }
 
     return false;
+}
+
+int get_first_number(long number)
+{
+    int division = 1;
+    for (int i = 0; i < number - 1; i++)
+    {
+        division = division * 10;
+    }
+
+    return number / division;
+}
+
+int get_second_number(long number)
+{
+    int division = 1;
+    for (int i = 0; i < number - 2; i++)
+    {
+        division = division * 10;
+    }
+
+    return number / division;
 }
