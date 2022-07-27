@@ -35,6 +35,7 @@ int main(void)
             printf("#");
         }
 
+        //print new line
         printf("\n");
     }
 }
