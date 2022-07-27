@@ -15,17 +15,10 @@ int main(void)
     int words = count_words(text);
     int sentences = count_sentences(text);
 
-    printf("letters %i\n", letters);
-    printf("words %i\n", words);
-    printf("sentences %i\n", sentences);
-
     // average letters per words
     double l = (letters / (float)words) * 100;
     // average sentences per words
     double s = (sentences / (float)words) * 100;
-
-printf("l %f\n", l);
-printf("s %f\n", s);
 
     int index = round(0.0588 * l - 0.296 * s - 15.8);
 
