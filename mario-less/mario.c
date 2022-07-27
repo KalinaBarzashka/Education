@@ -12,10 +12,11 @@ int main(void)
 
     for(int i = 1; i <= height; i++)
     {
+        printf("%i", i);
         for(int j = height - i; j <= 0; j++)
         {
-            printf("%0*d", j, ' ');
+            printf("%.*s", j, " ");
         }
-        printf("%0*d\n", i, '#');
+        printf("%.*s\n", i, "#");
     }
 }
