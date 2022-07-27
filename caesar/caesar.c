@@ -7,6 +7,7 @@ bool check_key(string key, int key_length);
 
 int main(int argc, string argv[])
 {
+    //check if there are only 2 arguments: program name and a key
     if (argc != 2)
     {
         printf("Usage: ./caesar key");
@@ -15,7 +16,8 @@ int main(int argc, string argv[])
 
     int key_length = strlen(argv[1]);
     string key = argv[1];
-    if(!check_key)
+    //ckeck if key got only digits!
+    if(!check_key(key, key_length))
     {
         printf("Usage: ./caesar key");
         return 1;
@@ -24,10 +26,14 @@ int main(int argc, string argv[])
     //convert string key to int key
     int key = atoi(key);
 
+    //prompt for plain text
     string plain_text = get_string("plaintext:  ");
+    //set initial cipher text which will be rotated
     string cipher_text = plain_text;
+    //get length of plain text
     int length = strlen(plain_text);
 
+    //iterate over every character
     for (int i = 0; i < length; i++)
     {
         if (isalpha(plain_text[i]))
@@ -44,12 +50,13 @@ bool check_key(string key, int key_length)
 {
     for (int i = 0; i < key_length; i++)
     {
+        //check if character is not a digit return false;
         if (!isdigit(key[i]))
         {
-            printf("Usage: ./caesar key");
             return false;
         }
     }
 
+    //if every character is a digit - ok, return true
     return true;
 }
