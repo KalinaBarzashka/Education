@@ -66,7 +66,7 @@ char rotate(char symbol, string key)
     //increment letter with key
     char new_letter = key[letter_count];
 
-    if(isupper)
+    if (isupper)
     {
         return toupper(new_letter);
     }
