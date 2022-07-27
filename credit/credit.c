@@ -20,6 +20,9 @@ int main(void)
     //get first and second numbers
     int first_number = get_first_number(length_of_number);
     int second_number = get_second_number(length_of_number);
+    printf("%i\n", length_of_number);
+    printf("%i\n", first_number);
+    printf("%i\n", second_number);
 
     bool valid = checksum(card_number, length_of_number);
 
