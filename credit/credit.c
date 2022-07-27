@@ -12,6 +12,7 @@ int main(void)
     //checksum
 
     long card_number = get_long("Number: ");
+    string card_str = card_number;
     //get length of number
     int length_of_number = floor(log10(number)) + 1;
 
@@ -19,9 +20,21 @@ int main(void)
 
     if (valid)
     {
-        if (length_of_number == 15 && )
+        if (length_of_number == 15 && card_str[0] == 2 && (card_str[1] == 4 || card_str[1] == 7))
         {
-
+            printf("AMEX\n");
+        }
+        else if ((length_of_number == 13 || length_of_number == 16) && card_str[0] == 4)
+        {
+            printf("VISA\n");
+        }
+        else if (length_of_number == 16 && card_str[0] == 5 && (card_str[1] == 1 || card_str[1] == 2 || card_str[1] == 3 || card_str[1] == 4 || card_str[1] == 5))
+        {
+            printf("MASTERCARD\n");
+        }
+        else
+        {
+            printf("INVALID\n");
         }
     }
     else
