@@ -35,14 +35,26 @@ int count_letters(string text)
 int count_words(string text)
 {
     int count = 0;
-    for (int i = 0, n = strlen(text); i < n; i++)
+    int n = strlen(text);
+    for (int i = 0; i < n; i++)
     {
         char symbol = text[i];
-        if (symbol == ' ')
+        if ((int)symbol == 32)
         {
-            
+            count++;
         }
     }
 
-    return count;
+    // if (text[0] == ' ')
+    // {
+    //     count--;
+    // }
+
+    // if (text[n - 1] == ' ')
+    // {
+    //     count--;
+    // }
+
+    //return count + 1 for the last word in the sentance
+    return count + 1;
 }
