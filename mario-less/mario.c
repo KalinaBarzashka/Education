@@ -10,8 +10,22 @@ int main(void)
     }
     while(height <= 0 || height > 8);
 
-    for(int i = 1; i <= height; i++)
+    for(int i = 0; i < height; i++)
     {
-        printf("#");
+        int spaces = height - i - 1;
+        int dashes = i + 1;
+
+        //cycle for spaces
+        for(int j = 0; j < spaces; j++)
+        {
+            printf(" ");
+        }
+        //cycle for dashes
+        for(int j = 0; j < dashes; j++)
+        {
+            printf("#");
+        }
+
+        printf("\n");
     }
 }
