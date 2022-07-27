@@ -97,10 +97,10 @@ bool has_duplicates(string key)
     int key_length = strlen(key);
     for (int i = 0; i < key_length; i++)
     {
-        char letter = key[i];
+        int letter = (int)key[i];
         for (int j = 0; j < key_length; j++)
         {
-            if (key[j] == letter)
+            if ((int)key[j] == letter)
             {
                 return true;
             }
