@@ -85,18 +85,18 @@ bool checksum(long number, int length_of_number)
 
 int get_first_number(long number)
 {
-    int division = 1;
+    long division = 1;
     for (int i = 0; i < number - 1; i++)
     {
         division = division * 10;
     }
-
+    printf("division: %li\n", division);
     return number / division;
 }
 
 int get_second_number(long number)
 {
-    int division = 1;
+    long division = 1;
     for (int i = 0; i < number - 2; i++)
     {
         division = division * 10;
