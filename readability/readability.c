@@ -39,7 +39,7 @@ int count_words(string text)
     for (int i = 0; i < n; i++)
     {
         char symbol = text[i];
-        if ((int)symbol == 32)
+        if ((int)symbol == 32 && !((int)text[i - 1] == 32))
         {
             count++;
         }
