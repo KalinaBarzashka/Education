@@ -25,7 +25,7 @@ int main(void)
 
     if (valid)
     {
-        if (length_of_number == 15 && first_number == 2 && (second_number == 4 || second_number == 7))
+        if (length_of_number == 15 && first_number == 3 && (second_number == 4 || second_number == 7))
         {
             printf("AMEX\n");
         }
