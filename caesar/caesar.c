@@ -1,6 +1,7 @@
 #include <cs50.h>
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 int main(int argc, string argv[])
 {
@@ -17,6 +18,9 @@ int main(int argc, string argv[])
         printf("Usage: ./caesar key");
         return 1;
     }
+
+    //convert string key to int key
+    int key = atoi(key);
 
     string plain_text = get_string("plaintext:  ");
     string cipher_text = plain_text;
