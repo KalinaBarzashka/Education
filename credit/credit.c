@@ -18,8 +18,8 @@ int main(void)
     int length_of_number = floor(log10(card_number)) + 1;
 
     //get first and second numbers
-    int first_number = get_first_number(card_number);
-    int second_number = get_second_number(card_number);
+    int first_number = get_first_number(length_of_number);
+    int second_number = get_second_number(length_of_number);
 
     bool valid = checksum(card_number, length_of_number);
 
