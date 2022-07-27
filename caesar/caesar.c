@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 bool only_digits (string key, int key_length);
 char rotate(char symbol, int key);
