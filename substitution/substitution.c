@@ -100,7 +100,7 @@ bool has_duplicates(string key)
         int letter = (int)key[i];
         for (int j = 0; j < key_length; j++)
         {
-            if ((int)key[j] == letter)
+            if ((int)key[j] == letter && i != j)
             {
                 return true;
             }
