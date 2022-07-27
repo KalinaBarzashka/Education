@@ -36,5 +36,13 @@ int main(void)
 int compute_score(string word)
 {
     // Compute and return score for string
-    
+    for (int i = 0, n = strlen(word); i < n; i++)
+    {
+        if (islower(word[i]))
+        {
+            word[i] = toupper(word[i]);
+        }
+    }
+
+    printf("%s", word);
 }
