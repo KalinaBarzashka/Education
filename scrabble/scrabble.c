@@ -21,15 +21,15 @@ int main(void)
     // Print the winner
     if (score1 == score2)
     {
-        printf("Tie!");
+        printf("Tie!\n");
     }
     else if (score1 > score2)
     {
-        printf("Player 1 wins!");
+        printf("Player 1 wins!\n");
     }
     else
     {
-        printf("Player 2 wins!");
+        printf("Player 2 wins!\n");
     }
 }
 
@@ -42,7 +42,12 @@ int compute_score(string word)
         {
             word[i] = toupper(word[i]);
         }
+        printf("%s", POINTS[]);
     }
 
-    printf("%s", word);
+    int sum = 0;
+
+
+
+    return sum;
 }
