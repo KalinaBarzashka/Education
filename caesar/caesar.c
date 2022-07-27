@@ -64,7 +64,11 @@ char rotate(char symbol, int key)
 {
     if (isupper(symbol))
     {
-
+        //get ascii number
+        int symbol_ascii = (int)symbol;
+        //get letter number (number between 0 and 25 - 26 letters total)
+        int letter_count = symbol_ascii - 65;
+        
     }
     else if (islower(symbol))
     {
