@@ -1,8 +1,10 @@
 #include <cs50.h>
 #include <stdio.h>
 #include <ctype.h>
+#include <string.h>
 
 bool only_alphab_chars(string key);
+char rotate(char symbol, string key);
 
 int main(int argc, string argv[])
 {
@@ -50,6 +52,7 @@ char rotate(char symbol, string key)
     if (isupper(symbol))
     {
         ascii_starts_with = 65;
+        isupper = true;
     }
     else if (islower(symbol))
     {
@@ -63,10 +66,12 @@ char rotate(char symbol, string key)
     //increment letter with key
     char new_letter = key[letter_count];
 
+    if(isupper)
+    {
+        return toupper(new_letter);
+    }
 
-
-    //return the new cipher character with the provided key
-    return (char)(sum_letter_key + ascii_starts_with);
+    return tolower(new_letter);
 
 }
 
