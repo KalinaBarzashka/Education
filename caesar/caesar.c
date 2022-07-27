@@ -25,7 +25,7 @@ int main(int argc, string argv[])
     }
 
     //convert string key to int key
-    int key = atoi(key);
+    int key = atoi(key_as_str);
 
     //prompt for plain text
     string plain_text = get_string("plaintext:  ");
@@ -62,28 +62,38 @@ bool only_digits(string key, int key_length)
 
 char rotate(char symbol, int key)
 {
+    int ascii_starts_with = 0;
+    bool is_letter = false;
     if (isupper(symbol))
     {
-        //get ascii number of symbol
-        int symbol_ascii = (int)symbol;
-        //get letter number (number between 0 and 25 - 26 letters total)
-        int letter_count = symbol_ascii - 65;
-        //increment letter with key
-        int sum_letter_key = (letter_count + key);
-
-        //if incremented letter is a number > 25 we have to substract 26 till its not > 25
-        while (sum_letter_key > 25)
-        {
-            sum_letter_key = sum_letter_key - 26;
-        }
-
-        //return the new cipher character with the provided key
-        return (char)(sum_letter_key + 65);
+        ascii_starts_with = 65;
+        is_letter = true;
     }
     else if (islower(symbol))
     {
-
+        ascii_starts_with = 97;
+        is_letter = true;
     }
 
-    return symbol;
+    if (is_letter == false)
+    {
+        return symbol;
+    }
+
+
+    //get ascii number of symbol
+    int symbol_ascii = (int)symbol;
+    //get letter number (number between 0 and 25 - 26 letters total)
+    int letter_count = symbol_ascii - ascii_starts_with;
+    //increment letter with key
+    int sum_letter_key = (letter_count + key);
+
+    //if incremented letter is a number > 25 we have to substract 26 till its not > 25
+    while (sum_letter_key > 25)
+    {
+        sum_letter_key = sum_letter_key - 26;
+    }
+
+    //return the new cipher character with the provided key
+    return (char)(sum_letter_key + ascii_starts_with);
 }
