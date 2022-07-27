@@ -3,23 +3,23 @@
 #include <string.h>
 #include <stdlib.h>
 
-bool check_key(string key, int key_length);
+bool only_digits (string key, int key_length);
 
 int main(int argc, string argv[])
 {
     //check if there are only 2 arguments: program name and a key
     if (argc != 2)
     {
-        printf("Usage: ./caesar key");
+        printf("Usage: ./caesar key\n");
         return 1;
     }
 
     int key_length = strlen(argv[1]);
     string key = argv[1];
     //ckeck if key got only digits!
-    if(!check_key(key, key_length))
+    if(!only_digits(key, key_length))
     {
-        printf("Usage: ./caesar key");
+        printf("Usage: ./caesar key\n");
         return 1;
     }
 
@@ -46,7 +46,7 @@ int main(int argc, string argv[])
     return 0;
 }
 
-bool check_key(string key, int key_length)
+bool only_digits(string key, int key_length)
 {
     for (int i = 0; i < key_length; i++)
     {
