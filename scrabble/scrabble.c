@@ -42,7 +42,8 @@ int compute_score(string word)
         {
             word[i] = toupper(word[i]);
         }
-        printf("%s", POINTS[]);
+        int index = (int)(word[i] - 64);
+        printf("%i", POINTS[index]);
     }
 
     int sum = 0;
