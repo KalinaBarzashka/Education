@@ -30,10 +30,14 @@ int main(int argc, string argv[])
 
     for (int i = 0; i < length; i++)
     {
-
+        if (isalpha(plain_text[i]))
+        {
+            cipher_text[i] = '';
+        }
     }
 
     printf("ciphertext: %s\n", cipher_text);
+    return 0;
 }
 
 bool check_key(string key, int key_length)
