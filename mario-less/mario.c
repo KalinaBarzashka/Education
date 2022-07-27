@@ -10,12 +10,12 @@ int main(void)
     }
     while(height <= 0 || height > 8);
 
-    for(int i = 0; i < height; i++)
+    for(int i = 1; i <= height; i++)
     {
-        for(int j = ; j++)
+        for(int j = height - i; j <= 0; j++)
         {
-            printf();
+            printf("%0*d", j, " ");
         }
-        printf("#\n");
+        printf("%0*d\n", i, "#");
     }
 }
