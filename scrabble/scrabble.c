@@ -35,6 +35,7 @@ int main(void)
 
 int compute_score(string word)
 {
+    int sum = 0;
     // Compute and return score for string
     for (int i = 0, n = strlen(word); i < n; i++)
     {
@@ -42,13 +43,9 @@ int compute_score(string word)
         {
             word[i] = toupper(word[i]);
         }
-        int index = (int)(word[i] - 64);
-        printf("%i", POINTS[index]);
+        int index = (int)(word[i] - 65);
+        sum = sum + POINTS[index];
     }
-
-    int sum = 0;
-
-
-
+    printf("%i\n", sum);
     return sum;
 }
