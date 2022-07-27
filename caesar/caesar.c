@@ -3,6 +3,8 @@
 #include <string.h>
 #include <stdlib.h>
 
+bool check_key(string key, int key_length);
+
 int main(int argc, string argv[])
 {
     if (argc != 2)
@@ -38,7 +40,7 @@ bool check_key(string key, int key_length)
 {
     for (int i = 0; i < key_length; i++)
     {
-        if (isalpha(key[i]))
+        if (!isdigit(key[i]))
         {
             printf("Usage: ./caesar key");
             return false;
