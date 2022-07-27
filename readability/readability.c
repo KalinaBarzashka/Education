@@ -40,7 +40,7 @@ int count_words(string text)
         char symbol = text[i];
         if (symbol == ' ')
         {
-
+            
         }
     }
 
