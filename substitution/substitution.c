@@ -5,6 +5,7 @@
 
 bool only_alphab_chars(string key);
 char rotate(char symbol, string key);
+bool has_duplicates(string key);
 
 int main(int argc, string argv[])
 {
@@ -16,7 +17,7 @@ int main(int argc, string argv[])
     }
 
     string key = argv[1];
-    if (strlen(key) != 26 || !only_alphab_chars(key)) //TODO: containing each letter exactly once
+    if (strlen(key) != 26 || !only_alphab_chars(key) || has_duplicates(key)) //TODO: containing each letter exactly once
     {
         printf("Key must contain 26 characters.\n");
         return 1;
@@ -89,4 +90,22 @@ bool only_alphab_chars(string key)
 
     //if every character is a alphabetic character - ok, return true
     return true;
+}
+
+bool has_duplicates(string key)
+{
+    int key_length = strlen(key);
+    for (int i = 0; i < key_length; i++)
+    {
+        char letter = key[i];
+        for (int j = 0; j < key_length; j++)
+        {
+            if (key[j] == letter)
+            {
+                return true;
+            }
+        }
+    }
+
+    return false;
 }
