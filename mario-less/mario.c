@@ -14,8 +14,8 @@ int main(void)
     {
         for(int j = height - i; j <= 0; j++)
         {
-            printf("%0*d", j, " ");
+            printf("%0*d", j, ' ');
         }
-        printf("%0*d\n", i, "#");
+        printf("%0*d\n", i, '#');
     }
 }
