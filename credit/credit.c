@@ -52,6 +52,7 @@ bool checksum(long number, int length_of_number)
 {
     //sum of multiplied numbers
     int sum_from_multiplication = 0;
+    int temp = 0;
 
     //sum of other digits
     int sum_not_multiplied = 0;
@@ -64,7 +65,18 @@ bool checksum(long number, int length_of_number)
         }
         else
         {
-            sum_from_multiplication = sum_from_multiplication + (number % 10) * 2;
+            temp = (number % 10) * 2;
+
+            if(temp > 9)
+            {
+                sum_from_multiplication = sum_from_multiplication + temp % 10;
+                temp = temp / 10;
+                sum_from_multiplication = sum_from_multiplication + temp % 10;
+            }
+            else
+            {
+                sum_from_multiplication = sum_from_multiplication + temp;
+            }
         }
 
         number = number / 10;
