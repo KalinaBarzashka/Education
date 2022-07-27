@@ -64,16 +64,21 @@ char rotate(char symbol, int key)
 {
     if (isupper(symbol))
     {
-        //get ascii number
+        //get ascii number of symbol
         int symbol_ascii = (int)symbol;
         //get letter number (number between 0 and 25 - 26 letters total)
         int letter_count = symbol_ascii - 65;
+        //increment letter with key
         int sum_letter_key = (letter_count + key);
 
+        //if incremented letter is a number > 25 we have to substract 26 till its not > 25
         while (sum_letter_key > 25)
         {
-            sum_letter_key = sum_letter_key - 25;
+            sum_letter_key = sum_letter_key - 26;
         }
+
+        //return the new cipher character with the provided key
+        return (char)(sum_letter_key + 65);
     }
     else if (islower(symbol))
     {
