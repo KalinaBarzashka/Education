@@ -15,9 +15,9 @@ int main(void)
     int words = count_words(text);
     int sentences = count_sentences(text);
 
-    printf("letters %i", letters);
-    printf("words %i", words);
-    printf("sentences %i", sentences);
+    printf("letters %i\n", letters);
+    printf("words %i\n", words);
+    printf("sentences %i\n", sentences);
 
     // average letters per words
     double l = letters / words * 100;
