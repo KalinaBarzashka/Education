@@ -21,6 +21,7 @@ int main(void)
     int first_number = get_first_number(card_number, length_of_number);
     int second_number = get_second_number(card_number, length_of_number);
 
+    //check if checksum is valid
     bool valid = checksum(card_number, length_of_number);
 
     if (valid)
@@ -33,7 +34,8 @@ int main(void)
         {
             printf("VISA\n");
         }
-        else if (length_of_number == 16 && first_number == 5 && (second_number == 1 || second_number == 2 || second_number == 3 || second_number == 4 || second_number == 5))
+        else if (length_of_number == 16 && first_number == 5 &&
+                 (second_number == 1 || second_number == 2 || second_number == 3 || second_number == 4 || second_number == 5))
         {
             printf("MASTERCARD\n");
         }
@@ -52,6 +54,7 @@ bool checksum(long number, int length_of_number)
 {
     //sum of multiplied numbers
     int sum_from_multiplication = 0;
+    //temp variable to store nultiplied number, so if > 9 we can get the separate digits
     int temp = 0;
 
     //sum of other digits
@@ -59,15 +62,16 @@ bool checksum(long number, int length_of_number)
 
     for (int i = 0; i < length_of_number; i++)
     {
+        //sum every even digit
         if (i % 2 == 0)
         {
             sum_not_multiplied = sum_not_multiplied + (number % 10);
         }
-        else
+        else //multiply every other digit starting from the second to last
         {
             temp = (number % 10) * 2;
 
-            if(temp > 9)
+            if (temp > 9)
             {
                 sum_from_multiplication = sum_from_multiplication + temp % 10;
                 temp = temp / 10;
@@ -82,8 +86,10 @@ bool checksum(long number, int length_of_number)
         number = number / 10;
     }
 
+    //get final sum
     int final_sum = sum_from_multiplication + sum_not_multiplied;
 
+    //get last digit from final sum
     if (final_sum % 10 == 0)
     {
         return true;
@@ -94,6 +100,7 @@ bool checksum(long number, int length_of_number)
 
 int get_first_number(long card_number, int length)
 {
+    //make number with zeros so we can get first number
     long division = 1;
     for (int i = 0; i < length - 1; i++)
     {
@@ -105,6 +112,7 @@ int get_first_number(long card_number, int length)
 
 int get_second_number(long card_number, int length)
 {
+    //make number with zeros so we can get second number
     long division = 1;
     for (int i = 0; i < length - 2; i++)
     {
