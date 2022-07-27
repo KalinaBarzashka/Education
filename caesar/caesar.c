@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-bool only_digits (string key, int key_length);
+bool only_digits(string key, int key_length);
 char rotate(char symbol, int key);
 
 int main(int argc, string argv[])
@@ -19,7 +19,7 @@ int main(int argc, string argv[])
     int key_length = strlen(argv[1]);
     string key_as_str = argv[1];
     //ckeck if key got only digits!
-    if(!only_digits(key_as_str, key_length))
+    if (!only_digits(key_as_str, key_length))
     {
         printf("Usage: ./caesar key\n");
         return 1;
