@@ -62,7 +62,11 @@ bool only_digits(string key, int key_length)
 
 char rotate(char symbol, int key)
 {
-    if (isalpha(symbol))
+    if (isupper(symbol))
+    {
+
+    }
+    else if (islower(symbol))
     {
 
     }
