@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <math.h>
 
-bool checksum(long number);
+bool checksum(long number, int length_of_number);
 
 int main(void)
 {
@@ -12,25 +12,53 @@ int main(void)
     //checksum
 
     long card_number = get_long("Number: ");
-    bool valid = checksum(card_number);
+    //get length of number
+    int length_of_number = floor(log10(number)) + 1;
 
-    if (!valid)
+    bool valid = checksum(card_number, length_of_number);
+
+    if (valid)
     {
-        printf("INVALID\n");
+        if (length_of_number == 15 && )
+        {
+
+        }
     }
     else
     {
-        printf("VALID");
+        printf("INVALID\n");
     }
 }
 
-bool checksum(long number)
+bool checksum(long number, int length_of_number)
 {
-    int length_of_number = floor(log10(number)) + 1;
-    printf("%i", length_of_number);
+    //sum of multiplied numbers
+    int sum_from_multiplication = 0;
+
+    //sum of other digits
+    int sum_not_multiplied = 0;
+
+    int
+
     for (int i = 0; i < length_of_number; i++)
     {
+        if (i % 2 == 0)
+        {
+            sum_not_multiplied = sum_not_multiplied + (number % 10);
+        }
+        else
+        {
+            sum_from_multiplication = sum_from_multiplication + (number % 10) * 2;
+        }
 
+        number = number / 10;
+    }
+
+    int final_sum = sum_from_multiplication + sum_not_multiplied;
+
+    if (final_sum % 10 == 0)
+    {
+        return true;
     }
 
     return false;
