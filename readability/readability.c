@@ -5,16 +5,18 @@
 
 int count_letters(string text);
 int count_words(string text);
+int count_sentences(string text);
 
 int main(void)
 {
     string text = get_string("Text: ");
     int letters = count_letters(text);
     int words = count_words(text);
-    int sentences = 0;
+    int sentences = count_sentences(text);
 
     printf("%i letters\n", letters);
     printf("%i words\n", words);
+    printf("%i sentences\n", sentences);
 }
 
 int count_letters(string text)
@@ -57,4 +59,19 @@ int count_words(string text)
 
     //return count + 1 for the last word in the sentance
     return count + 1;
+}
+
+int count_sentences(string text)
+{
+    int count = 0;
+    for (int i = 0, n = strlen(text); i < n; i++)
+    {
+        char symbol = text[i];
+        if (symbol == 33 || symbol == 63 || symbol == 46)
+        {
+            count++;
+        }
+    }
+
+    return count;
 }
