@@ -43,9 +43,13 @@ int compute_score(string word)
         {
             word[i] = toupper(word[i]);
         }
-        int index = (int)(word[i] - 65);
-        sum = sum + POINTS[index];
+
+        if(isalpha(word[i]))
+        {
+            int index = (int)(word[i] - 65);
+            sum = sum + POINTS[index];
+        }
     }
-    printf("%i\n", sum);
+
     return sum;
 }
