@@ -66,7 +66,8 @@ int main(int argc, string argv[])
 // Update vote totals given a new vote
 bool vote(string name)
 {
-    // TODO
+    // check if name matches one of the names of the candidates in the election
+    for (int i = 0; i < candidates)
     return false;
 }
 
