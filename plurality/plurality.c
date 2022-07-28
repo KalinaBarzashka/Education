@@ -67,13 +67,21 @@ int main(int argc, string argv[])
 bool vote(string name)
 {
     // check if name matches one of the names of the candidates in the election
-    for (int i = 0; i < candidates)
+    for (int i = 0; i < candidate_count; i++)
+    {
+        if (strcmp(name, candidates[i].name) == 0)
+        {
+            candidates[i].votes++;
+            return true;
+        }
+    }
     return false;
 }
 
 // Print the winner (or winners) of the election
 void print_winner(void)
 {
-    // TODO
+    // print out the name of the candidate who received the most votes in the election
+    printf("\n");
     return;
 }
