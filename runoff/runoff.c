@@ -144,7 +144,7 @@ bool vote(int voter, int rank, string name)
 // Tabulate votes for non-eliminated candidates
 void tabulate(void)
 {
-    // TODO
+
     for (int i = 0; i < voter_count; i++)
     {
         for (int j = 0; j < candidate_count; j++)
@@ -158,7 +158,6 @@ void tabulate(void)
             candidates[top_candidate].votes++;
             break;
         }
-
     }
     return;
 }
@@ -166,7 +165,15 @@ void tabulate(void)
 // Print the winner of the election, if there is one
 bool print_winner(void)
 {
-    // TODO
+    float half_votes = round();
+    for (int j = 0; j < candidate_count; j++)
+    {
+        if (candidates[j].votes >= half_votes)
+        {
+            return true;
+        }
+    }
+
     return false;
 }
 
