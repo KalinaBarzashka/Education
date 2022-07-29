@@ -1,5 +1,6 @@
 #include <cs50.h>
 #include <string.h>
+#include <math.h>
 #include <stdio.h>
 
 // Max voters and candidates
@@ -165,7 +166,7 @@ void tabulate(void)
 // Print the winner of the election, if there is one
 bool print_winner(void)
 {
-    float half_votes = round(voter_count / 2.0);
+    double half_votes = ceil(voter_count / 2.0);
     for (int i = 0; i < candidate_count; i++)
     {
         if (candidates[i].votes >= half_votes)
