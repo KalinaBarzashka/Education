@@ -156,6 +156,7 @@ void tabulate(void)
             }
 
             candidates[top_candidate].votes++;
+            break;
         }
 
     }
