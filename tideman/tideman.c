@@ -7,7 +7,7 @@
 // preferences[i][j] is number of voters who prefer i over j
 int preferences[MAX][MAX];
 
-// locked[i][j] means i is locked in over j
+// locked[i][j] means i is locked in over j - candidate graph
 bool locked[MAX][MAX];
 
 // Each pair has a winner, loser
