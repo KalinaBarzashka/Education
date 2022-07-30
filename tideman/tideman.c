@@ -142,12 +142,13 @@ void add_pairs(void)
         {
             if (preferences[i][j] > preferences[j][i])
             {
-                
+                pairs[pair_count] 
+                pair_count++;
             }
         }
     }
-    pairs
-    pair_count++;
+
+
     return;
 }
 
