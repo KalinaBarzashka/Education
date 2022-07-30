@@ -49,7 +49,7 @@ int main(int argc, string argv[])
         printf("Maximum number of candidates is %i\n", MAX);
         return 2;
     }
-    
+
     for (int i = 0; i < candidate_count; i++)
     {
         candidates[i] = argv[i + 1];
@@ -100,7 +100,15 @@ int main(int argc, string argv[])
 // Update ranks given a new vote
 bool vote(int rank, string name, int ranks[])
 {
-    // TODO
+    for (int i = 0; i < candidate_count; i++)
+    {
+        if (strcmp(candidates[i], name) == 0)
+        {
+            ranks[rank] = i;
+            return true;
+        }
+    }
+
     return false;
 }
 
