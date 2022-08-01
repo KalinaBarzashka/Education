@@ -200,6 +200,7 @@ void lock_pairs(void)
         if (!has_cycle(winner, loser))
         {
             locked[winner, loser] = true;
+            //locked[pairs[i].winner][pairs[i].loser] = true;
         }
     }
 
@@ -240,7 +241,7 @@ bool has_cycle(int start, int end)
     //loop through candidates
     for (int i = 0; i < candidate_count; i++)
     {
-        if (locked[end][i]])
+        if (locked[end][i])
         {
             if (has_cycle(i, start))
             {
