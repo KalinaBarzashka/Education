@@ -33,6 +33,7 @@ void add_pairs(void);
 void sort_pairs(void);
 void lock_pairs(void);
 void print_winner(void);
+bool has_cycle(int start, int end);
 
 int main(int argc, string argv[])
 {
@@ -196,18 +197,57 @@ void lock_pairs(void)
         int loser = pairs[i].loser;
 
         //If false, lock pairs
-        if (!has_cycle(loser, winner))
+        if (!has_cycle(winner, loser))
         {
-            int
             locked[winner, loser] = true;
         }
     }
+
     return;
 }
 
 // Print the winner of the election
 void print_winner(void)
 {
-    // TODO
+    for (int i = 0; i < candidate_count; i++)
+    {
+        int falseValues = 0;
+        for(int j = 0; j < candidate_count; j++)
+        {
+            if(!locked[j][i])
+            {
+                falseValues++;
+                if(falseValues == candidate_count)
+                {
+                    printf("%s\n",candidates[i]);
+                }
+            }
+        }
+    }
+
     return;
+}
+
+bool has_cycle(int start, int end)
+{
+    //recursion base case
+    //return true if there is a cycle created
+    if (start == end)
+    {
+        return true;
+    }
+
+    //loop through candidates
+    for (int i = 0; i < candidate_count; i++)
+    {
+        if(locked[end][i]])
+        {
+            if(has_cycle(i, start))
+            {
+                return true;
+            }
+        }
+    }
+
+    return false;
 }
