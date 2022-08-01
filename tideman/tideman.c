@@ -212,14 +212,14 @@ void print_winner(void)
     for (int i = 0; i < candidate_count; i++)
     {
         int not_locked = 0;
-        for(int j = 0; j < candidate_count; j++)
+        for (int j = 0; j < candidate_count; j++)
         {
-            if(!locked[j][i])
+            if (!locked[j][i])
             {
                 not_locked++;
-                if(not_locked == candidate_count)
+                if (not_locked == candidate_count)
                 {
-                    printf("%s\n",candidates[i]);
+                    printf("%s\n", candidates[i]);
                 }
             }
         }
@@ -240,9 +240,9 @@ bool has_cycle(int start, int end)
     //loop through candidates
     for (int i = 0; i < candidate_count; i++)
     {
-        if(locked[end][i]])
+        if (locked[end][i]])
         {
-            if(has_cycle(i, start))
+            if (has_cycle(i, start))
             {
                 return true;
             }
