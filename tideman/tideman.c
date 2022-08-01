@@ -197,7 +197,7 @@ void lock_pairs(void)
         int loser = pairs[i].loser;
 
         //If false, lock pairs
-        if (!has_cycle(winner, loser))
+        if (!has_cycle(loser, winner))
         {
             locked[winner][loser] = true;
         }
@@ -228,11 +228,11 @@ void print_winner(void)
     return;
 }
 
-bool has_cycle(int start, int end)
+bool has_cycle(int end, int start)
 {
     //recursion base case
     //return true if there is a cycle created
-    if (start == end)
+    if (end == start)
     {
         return true;
     }
