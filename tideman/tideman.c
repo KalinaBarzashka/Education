@@ -192,7 +192,15 @@ void lock_pairs(void)
 {
     for (int i = 0; i < pair_count; i++)
     {
+        int winner = pairs[i].winner;
+        int loser = pairs[i].loser;
 
+        //If false, lock pairs
+        if (!has_cycle(loser, winner))
+        {
+            int
+            locked[winner, loser] = true;
+        }
     }
     return;
 }
