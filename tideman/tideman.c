@@ -199,8 +199,7 @@ void lock_pairs(void)
         //If false, lock pairs
         if (!has_cycle(winner, loser))
         {
-            locked[winner, loser] = true;
-            //locked[pairs[i].winner][pairs[i].loser] = true;
+            locked[winner][loser] = true;
         }
     }
 
