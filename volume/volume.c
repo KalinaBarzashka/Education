@@ -49,4 +49,7 @@ int main(int argc, char *argv[])
     // Close files
     fclose(input);
     fclose(output);
+
+    //free used memory
+    free(sample);
 }
