@@ -45,9 +45,12 @@ int main(int argc, char *argv[])
         fputc(header[i], output);
     }
 
-
-
     // TODO: Read samples from input file and write updated data to output file
+    int16_t sample;
+    while ((sample = fgetc(input)) != EOF)
+    {
+        fputc(sample * factor, output);
+    }
 
     // Close files
     fclose(input);
