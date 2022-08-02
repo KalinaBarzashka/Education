@@ -8,5 +8,4 @@ int main(int argc, string argv[])
     x[1] = 72;
     x[2] = 73;
     x[3] = 33;
-
 }
