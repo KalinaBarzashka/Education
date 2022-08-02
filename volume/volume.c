@@ -49,4 +49,16 @@ int main(int argc, char *argv[])
     // Close files
     fclose(input);
     fclose(output);
+
+
+
+
+    int a = 5;
+    increce(a);
+    printf(a);
+}
+
+void increce(int aa)
+{
+    aa++;
 }
