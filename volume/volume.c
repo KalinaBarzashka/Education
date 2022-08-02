@@ -40,7 +40,12 @@ int main(int argc, char *argv[])
         header[i] = fgetc(input);
     }
 
-    printf("%s\n", header);
+    for (int i = 0; i < HEADER_SIZE; i++)
+    {
+        fputc(header[i], output);
+    }
+
+
 
     // TODO: Read samples from input file and write updated data to output file
 
