@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
     int16_t *sample = malloc(sizeof(int16_t));
     while (fread(&sample, sizeof(int16_t), 1, input))
     {
-        sample *= factor;
+        *sample *= factor;
         fwrite(&sample, sizeof(int16_t), 1, output);
     }
 
