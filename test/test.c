@@ -1,9 +1,12 @@
 #include <cs50.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 int main(int argc, string argv[])
 {
-    char *s = "HI!";
-    printf("%c\n", *(s+2));
+    int *x = malloc(3 * sizeof(int));
+    x[1] = 72;
+    x[2] = 73;
+    x[3] = 33;
 
 }
