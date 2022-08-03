@@ -112,122 +112,72 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             RGBTRIPLE crtPixel = img_copy[h][w];
 
             //top and bottom row pixels
-            RGBTRIPLE topLeft = NULL;
-            RGBTRIPLE topMiddle = NULL;
-            RGBTRIPLE topRight = NULL;
-
-            RGBTRIPLE bottomLeft = NULL;
-            RGBTRIPLE bottomMiddle = NULL;
-            RGBTRIPLE bottomRight = NULL;
-
             if (h - 1 >= 0) //check if we have top row
             {
-                topMiddle = img_copy[h - 1][w];
-                if (w - 1 >= 0) //check if we have top left pixel
-                {
-                    topLeft = img_copy[h - 1][w - 1];
-                }
-                else if (w + 1 < width) //check if we have top right pixel
-                {
-                    topRight = img_copy[h - 1][w + 1];
-                }
-            }
-            else if (h + 1 < height) //check if we have bottom row
-            {
-                bottomMiddle = img_copy[h + 1][w];
-                if (w - 1 >= 0) //check if we have bottom left pixel
-                {
-                    bottomLeft = img_copy[h + 1][w - 1];
-                }
-                else if (w + 1 < width) //check if we have top right pixel
-                {
-                    bottomRight = img_copy[h + 1][w + 1];
-                }
-            }
-
-            //right and left current row pixels
-            RGBTRIPLE crtRight = NULL;
-            RGBTRIPLE crtLeft = NULL;
-            if (w + 1 < width)
-            {
-                crtRight = img_copy[h][w + 1];
-            }
-            else if (w - 1 >= 0)
-            {
-                crtLeft = img_copy[h][w - 1];
-            }
-
-
-
-            if (topLeft != NULL) //top left
-            {
-                avgRed += topLeft.rgbtRed;
-                avgGreen += topLeft.rgbtGreen;
-                avgBlue += topLeft.rgbtBlue;
-                counter++;
-            }
-
-            if (topMiddle != NULL) //top middle
-            {
+                RGBTRIPLE topMiddle = img_copy[h - 1][w];
                 avgRed += topMiddle.rgbtRed;
                 avgGreen += topMiddle.rgbtGreen;
                 avgBlue += topMiddle.rgbtBlue;
                 counter++;
-            }
 
-            if (topRight != NULL) //top right
-            {
-                avgRed += topRight.rgbtRed;
-                avgGreen += topRight.rgbtGreen;
-                avgBlue += topRight.rgbtBlue;
-                counter++;
+                if (w - 1 >= 0) //check if we have top left pixel
+                {
+                    RGBTRIPLE topLeft = img_copy[h - 1][w - 1];
+                    avgRed += topLeft.rgbtRed;
+                    avgGreen += topLeft.rgbtGreen;
+                    avgBlue += topLeft.rgbtBlue;
+                    counter++;
+                }
+                else if (w + 1 < width) //check if we have top right pixel
+                {
+                    RGBTRIPLE topRight = img_copy[h - 1][w + 1];
+                    avgRed += topRight.rgbtRed;
+                    avgGreen += topRight.rgbtGreen;
+                    avgBlue += topRight.rgbtBlue;
+                    counter++;
+                }
             }
-
-            if (bottomLeft != NULL) //bottom left
+            else if (h + 1 < height) //check if we have bottom row
             {
-                avgRed += bottomLeft.rgbtRed;
-                avgGreen += bottomLeft.rgbtGreen;
-                avgBlue += bottomLeft.rgbtBlue;
-                counter++;
-            }
-
-            if (bottomMiddle != NULL) //bottom middle
-            {
+                RGBTRIPLE bottomMiddle = img_copy[h + 1][w];
                 avgRed += bottomMiddle.rgbtRed;
                 avgGreen += bottomMiddle.rgbtGreen;
                 avgBlue += bottomMiddle.rgbtBlue;
                 counter++;
+
+                if (w - 1 >= 0) //check if we have bottom left pixel
+                {
+                    RGBTRIPLE bottomLeft = img_copy[h + 1][w - 1];
+                    avgRed += bottomLeft.rgbtRed;
+                    avgGreen += bottomLeft.rgbtGreen;
+                    avgBlue += bottomLeft.rgbtBlue;
+                    counter++;
+                }
+                else if (w + 1 < width) //check if we have top right pixel
+                {
+                    RGBTRIPLE bottomRight = img_copy[h + 1][w + 1];
+                    avgRed += bottomRight.rgbtRed;
+                    avgGreen += bottomRight.rgbtGreen;
+                    avgBlue += bottomRight.rgbtBlue;
+                    counter++;
+                }
             }
 
-            if (bottomRight != NULL) //bottom right
+            //right and left current row pixels
+            if (w + 1 < width)
             {
-                avgRed += bottomRight.rgbtRed;
-                avgGreen += bottomRight.rgbtGreen;
-                avgBlue += bottomRight.rgbtBlue;
-                counter++;
-            }
-
-            if (crtRight != NULL) //current right
-            {
+                RGBTRIPLE crtRight = img_copy[h][w + 1];
                 avgRed += crtRight.rgbtRed;
                 avgGreen += crtRight.rgbtGreen;
                 avgBlue += crtRight.rgbtBlue;
                 counter++;
             }
-
-            if (crtLeft != NULL) //current left
+            else if (w - 1 >= 0)
             {
+                RGBTRIPLE crtLeft = img_copy[h][w - 1];
                 avgRed += crtLeft.rgbtRed;
                 avgGreen += crtLeft.rgbtGreen;
                 avgBlue += crtLeft.rgbtBlue;
-                counter++;
-            }
-
-            if (crtPixel != NULL) //current pixel
-            {
-                avgRed += crtPixel.rgbtRed;
-                avgGreen += crtPixel.rgbtGreen;
-                avgBlue += crtPixel.rgbtBlue;
                 counter++;
             }
 
