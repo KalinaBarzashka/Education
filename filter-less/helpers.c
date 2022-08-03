@@ -127,7 +127,8 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                     avgBlue += topLeft.rgbtBlue;
                     counter++;
                 }
-                else if (w + 1 < width) //check if we have top right pixel
+
+                if (w + 1 < width) //check if we have top right pixel
                 {
                     RGBTRIPLE topRight = img_copy[h - 1][w + 1];
                     avgRed += topRight.rgbtRed;
@@ -136,7 +137,8 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                     counter++;
                 }
             }
-            else if (h + 1 < height) //check if we have bottom row
+
+            if (h + 1 < height) //check if we have bottom row
             {
                 RGBTRIPLE bottomMiddle = img_copy[h + 1][w];
                 avgRed += bottomMiddle.rgbtRed;
@@ -152,7 +154,8 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                     avgBlue += bottomLeft.rgbtBlue;
                     counter++;
                 }
-                else if (w + 1 < width) //check if we have top right pixel
+
+                if (w + 1 < width) //check if we have top right pixel
                 {
                     RGBTRIPLE bottomRight = img_copy[h + 1][w + 1];
                     avgRed += bottomRight.rgbtRed;
@@ -171,7 +174,8 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                 avgBlue += crtRight.rgbtBlue;
                 counter++;
             }
-            else if (w - 1 >= 0)
+
+            if (w - 1 >= 0)
             {
                 RGBTRIPLE crtLeft = img_copy[h][w - 1];
                 avgRed += crtLeft.rgbtRed;
