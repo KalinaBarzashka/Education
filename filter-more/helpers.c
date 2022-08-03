@@ -261,9 +261,9 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
                 avg_gx_blue += crtLeft.rgbtBlue * (-2);
             }
 
-            image[h][w].rgbtRed = avgRed;
-            image[h][w].rgbtGreen = avgGreen;
-            image[h][w].rgbtBlue = avgBlue;
+            image[h][w].rgbtRed = sqrt(pow(avg_gx_red, 2) + pow(avg_gy_red, 2));
+            image[h][w].rgbtGreen = sqrt(pow(avg_gx_green, 2) + pow(avg_gy_green, 2));
+            image[h][w].rgbtBlue = sqrt(pow(avg_gx_blue, 2) + pow(avg_gy_blue, 2));
         }
     }
 
