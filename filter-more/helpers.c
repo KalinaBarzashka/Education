@@ -2,6 +2,7 @@
 #include <math.h>
 
 void make_copy(int height, int width, RGBTRIPLE image[height][width], RGBTRIPLE img_copy[height][width]);
+int get_less(int value);
 
 // Convert image to grayscale
 void grayscale(int height, int width, RGBTRIPLE image[height][width])
@@ -261,9 +262,13 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
                 avg_gx_blue += crtLeft.rgbtBlue * (-2);
             }
 
-            image[h][w].rgbtRed = sqrt(pow(avg_gx_red, 2) + pow(avg_gy_red, 2));
-            image[h][w].rgbtGreen = sqrt(pow(avg_gx_green, 2) + pow(avg_gy_green, 2));
-            image[h][w].rgbtBlue = sqrt(pow(avg_gx_blue, 2) + pow(avg_gy_blue, 2));
+            int new_red = sqrt(pow(avg_gx_red, 2) + pow(avg_gy_red, 2));
+            int new_green = sqrt(pow(avg_gx_green, 2) + pow(avg_gy_green, 2));
+            int new_blue = sqrt(pow(avg_gx_blue, 2) + pow(avg_gy_blue, 2));
+
+            image[h][w].rgbtRed = new_red;
+            image[h][w].rgbtGreen = new_green;
+            image[h][w].rgbtBlue = new_blue;
         }
     }
 
@@ -279,6 +284,16 @@ void make_copy(int height, int width, RGBTRIPLE image[height][width], RGBTRIPLE 
             img_copy[h][w] = image[h][w];
         }
     }
+}
+
+int get_less(int value)
+{
+    if (value > 255)
+    {
+        return 255;
+    }
+
+    return value;
 }
 
 //void add_to_avg(int height, int width, RGBTRIPLE image[height][width], int *avgRed, int *avgGreen, int *avgBlue, double *counter)
