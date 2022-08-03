@@ -88,6 +88,13 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
 {
     //make a cory of the image
     RGBTRIPLE img_copy[height][width];
+    for (int h = 0; h < height; h++)
+    {
+        for (int w = 0; w < width; w++)
+        {
+            img_copy[h][w] = image[h][w];
+        }
+    }
 
     //each row
     for (int h = 0; h < height; h++)
@@ -95,7 +102,14 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
         //each column / pixel
         for (int w = 0; w < width; w++)
         {
-            RGBTRIPLE crtPixel = image[h][w];
+            //rgbtBlue/rgbtGreen/rgbtRed
+            double counter = 0.0;
+            //new avg colors
+            int avgRed = 0;
+            int avgGreen = 0;
+            int avgBlue = 0;
+
+            RGBTRIPLE crtPixel = img_copy[h][w];
 
             //top and bottom row pixels
             RGBTRIPLE topLeft = NULL;
@@ -108,26 +122,26 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
 
             if (h - 1 >= 0) //check if we have top row
             {
-                topMiddle = image[h - 1][w];
+                topMiddle = img_copy[h - 1][w];
                 if (w - 1 >= 0) //check if we have top left pixel
                 {
-                    topLeft = image[h - 1][w - 1];
+                    topLeft = img_copy[h - 1][w - 1];
                 }
                 else if (w + 1 < width) //check if we have top right pixel
                 {
-                    topRight = image[h - 1][w + 1];
+                    topRight = img_copy[h - 1][w + 1];
                 }
             }
             else if (h + 1 < height) //check if we have bottom row
             {
-                bottomMiddle = image[h + 1][w];
+                bottomMiddle = img_copy[h + 1][w];
                 if (w - 1 >= 0) //check if we have bottom left pixel
                 {
-                    bottomLeft = image[h + 1][w - 1];
+                    bottomLeft = img_copy[h + 1][w - 1];
                 }
                 else if (w + 1 < width) //check if we have top right pixel
                 {
-                    bottomRight = image[h + 1][w + 1];
+                    bottomRight = img_copy[h + 1][w + 1];
                 }
             }
 
@@ -136,19 +150,14 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             RGBTRIPLE crtLeft = NULL;
             if (w + 1 < width)
             {
-                crtRight = image[h][w + 1];
+                crtRight = img_copy[h][w + 1];
             }
             else if (w - 1 >= 0)
             {
-                crtLeft = image[h][w - 1];
+                crtLeft = img_copy[h][w - 1];
             }
 
-            //rgbtBlue/rgbtGreen/rgbtRed
-            double counter = 0.0;
-            //new avg colors
-            int avgRed = 0;
-            int avgGreen = 0;
-            int avgBlue = 0;
+
 
             if (topLeft != NULL) //top left
             {
@@ -226,13 +235,13 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             avgGreen = round(avgGreen / counter);
             avgBlue = round(avgBlue / counter);
 
-            img_copy[h][w].rgbtRed = avgRed;
-            img_copy[h][w].rgbtGreen = avgGreen;
-            img_copy[h][w].rgbtBlue = avgBlue;
+            image[h][w].rgbtRed = avgRed;
+            image[h][w].rgbtGreen = avgGreen;
+            image[h][w].rgbtBlue = avgBlue;
         }
     }
 
-    
+
 
     return;
 }
