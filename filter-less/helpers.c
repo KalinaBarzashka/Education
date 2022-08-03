@@ -112,7 +112,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                     topRight = image[h - 1][w + 1];
                 }
             }
-            else if (h + 1 < heigth) //check if we have bottom row
+            else if (h + 1 < height) //check if we have bottom row
             {
                 bottomMiddle = image[h + 1][w];
                 if (w - 1 >= 0) //check if we have bottom left pixel
@@ -137,8 +137,92 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                 crtLeft = image[h][w - 1];
             }
 
-            int counter = 0;
-            
+            //rgbtBlue/rgbtGreen/rgbtRed
+            double counter = 0.0;
+            //new avg colors
+            int avgRed = 0;
+            int avgGreen = 0;
+            int avgBlue = 0;
+
+            if (topLeft != NULL) //top left
+            {
+                avgRed += topLeft.rgbtRed;
+                avgGreen += topLeft.rgbtGreen;
+                avgBlue += topLeft.rgbtBlue;
+                counter++;
+            }
+
+            if (topMiddle != NULL) //top middle
+            {
+                avgRed += topMiddle.rgbtRed;
+                avgGreen += topMiddle.rgbtGreen;
+                avgBlue += topMiddle.rgbtBlue;
+                counter++;
+            }
+
+            if (topRight != NULL) //top right
+            {
+                avgRed += topRight.rgbtRed;
+                avgGreen += topRight.rgbtGreen;
+                avgBlue += topRight.rgbtBlue;
+                counter++;
+            }
+
+            if (bottomLeft != NULL) //bottom left
+            {
+                avgRed += bottomLeft.rgbtRed;
+                avgGreen += bottomLeft.rgbtGreen;
+                avgBlue += bottomLeft.rgbtBlue;
+                counter++;
+            }
+
+            if (bottomMiddle != NULL) //bottom middle
+            {
+                avgRed += bottomMiddle.rgbtRed;
+                avgGreen += bottomMiddle.rgbtGreen;
+                avgBlue += bottomMiddle.rgbtBlue;
+                counter++;
+            }
+
+            if (bottomRight != NULL) //bottom right
+            {
+                avgRed += bottomRight.rgbtRed;
+                avgGreen += bottomRight.rgbtGreen;
+                avgBlue += bottomRight.rgbtBlue;
+                counter++;
+            }
+
+            if (crtRight != NULL) //current right
+            {
+                avgRed += crtRight.rgbtRed;
+                avgGreen += crtRight.rgbtGreen;
+                avgBlue += crtRight.rgbtBlue;
+                counter++;
+            }
+
+            if (crtLeft != NULL) //current left
+            {
+                avgRed += crtLeft.rgbtRed;
+                avgGreen += crtLeft.rgbtGreen;
+                avgBlue += crtLeft.rgbtBlue;
+                counter++;
+            }
+
+            if (crtPixel != NULL) //current pixel
+            {
+                avgRed += crtPixel.rgbtRed;
+                avgGreen += crtPixel.rgbtGreen;
+                avgBlue += crtPixel.rgbtBlue;
+                counter++;
+            }
+
+            avgRed = round(avgRed / counter);
+            avgGreen = round(avgGreen / counter);
+            avgBlue = round(avgBlue / counter);
+
+            image[h][w].rgbtRed = avgRed;
+            image[h][w].rgbtGreen = avgGreen;
+            image[h][w].rgbtBlue = avgBlue;
         }
     }
 
