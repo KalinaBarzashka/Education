@@ -83,5 +83,63 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
 // Blur image
 void blur(int height, int width, RGBTRIPLE image[height][width])
 {
+    //each row
+    for (int h = 0; h < height; h++)
+    {
+        //each column / pixel
+        for (int w = 0; w < width; w++)
+        {
+            RGBTRIPLE crtPixel = image[h][w];
+
+            //top and bottom row pixels
+            RGBTRIPLE topLeft = NULL;
+            RGBTRIPLE topMiddle = NULL;
+            RGBTRIPLE topRight = NULL;
+
+            RGBTRIPLE bottomLeft = NULL;
+            RGBTRIPLE bottomMiddle = NULL;
+            RGBTRIPLE bottomRight = NULL;
+
+            if (h - 1 >= 0) //check if we have top row
+            {
+                topMiddle = image[h - 1][w];
+                if (w - 1 >= 0) //check if we have top left pixel
+                {
+                    topLeft = image[h - 1][w - 1];
+                }
+                else if (w + 1 < width) //check if we have top right pixel
+                {
+                    topRight = image[h - 1][w + 1];
+                }
+            }
+            else if (h + 1 < heigth) //check if we have bottom row
+            {
+                bottomMiddle = image[h + 1][w];
+                if (w - 1 >= 0) //check if we have bottom left pixel
+                {
+                    bottomLeft = image[h + 1][w - 1];
+                }
+                else if (w + 1 < width) //check if we have top right pixel
+                {
+                    bottomRight = image[h + 1][w + 1];
+                }
+            }
+
+            //right and left current row pixels
+            RGBTRIPLE crtRight = NULL;
+            RGBTRIPLE crtLeft = NULL;
+            if (w + 1 < width)
+            {
+                crtRight = image[h][w + 1];
+            }
+            else if (w - 1 >= 0)
+            {
+                crtLeft = image[h][w - 1];
+            }
+
+            
+        }
+    }
+
     return;
 }
