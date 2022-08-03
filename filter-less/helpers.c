@@ -1,6 +1,8 @@
 #include "helpers.h"
 #include <math.h>
 
+int get_less(int value);
+
 // Convert image to grayscale
 void grayscale(int height, int width, RGBTRIPLE image[height][width])
 {
@@ -32,34 +34,35 @@ void sepia(int height, int width, RGBTRIPLE image[height][width])
         for (int w = 0; w < width; w++)
         {
             RGBTRIPLE pixel = image[h][w];
-            BYTE originalRed = pixel.rgbtRed;
-            BYTE originalGreen = pixel.rgbtGreen;
-            BYTE originalBlue = pixel.rgbtBlue;
+            BYTE original_red = pixel.rgbtRed;
+            BYTE original_green = pixel.rgbtGreen;
+            BYTE original_blue = pixel.rgbtBlue;
 
-            int sepiaRed = round(.393 * originalRed + .769 * originalGreen + .189 * originalBlue);
-            int sepiaGreen = round(.349 * originalRed + .686 * originalGreen + .168 * originalBlue);
-            int sepiaBlue = round(.272 * originalRed + .534 * originalGreen + .131 * originalBlue);
+            int sepia_red = round(.393 * original_red + .769 * original_green + .189 * original_blue);
+            int sepia_green = round(.349 * original_red + .686 * original_green + .168 * original_blue);
+            int sepia_blue = round(.272 * original_red + .534 * original_green + .131 * original_blue);
 
-            if (sepiaRed > 255)
-            {
-                sepiaRed = 255;
-            }
-            else if (sepiaGreen > 255)
-            {
-                sepiaGreen = 255;
-            }
-            else if (sepiaBlue > 255)
-            {
-                sepiaBlue = 255;
-            }
+            sepia_red = get_less(sepia_red);
+            sepia_green = get_less(sepia_green);
+            sepia_blue = get_less(sepia_blue);
 
-            image[h][w].rgbtBlue = sepiaBlue;
-            image[h][w].rgbtGreen = sepiaGreen;
-            image[h][w].rgbtRed = sepiaRed;
+            image[h][w].rgbtBlue = sepia_blue;
+            image[h][w].rgbtGreen = sepia_green;
+            image[h][w].rgbtRed = sepia_red;
         }
     }
 
     return;
+}
+
+int get_less(int value)
+{
+    if (value > 255)
+    {
+        return 255;
+    }
+
+    return value;
 }
 
 // Reflect image horizontally
@@ -83,6 +86,9 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
 // Blur image
 void blur(int height, int width, RGBTRIPLE image[height][width])
 {
+    //make a cory of the image
+    RGBTRIPLE img_copy[height][width];
+
     //each row
     for (int h = 0; h < height; h++)
     {
@@ -220,11 +226,13 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             avgGreen = round(avgGreen / counter);
             avgBlue = round(avgBlue / counter);
 
-            image[h][w].rgbtRed = avgRed;
-            image[h][w].rgbtGreen = avgGreen;
-            image[h][w].rgbtBlue = avgBlue;
+            img_copy[h][w].rgbtRed = avgRed;
+            img_copy[h][w].rgbtGreen = avgGreen;
+            img_copy[h][w].rgbtBlue = avgBlue;
         }
     }
+
+    
 
     return;
 }
