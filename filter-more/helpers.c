@@ -176,7 +176,6 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
             int avgGreen = 0;
             int avgBlue = 0;
 
-            //add_to_avg(h, w, img_copy, &avgRed, &avgGreen, &avgBlue, &counter);
             RGBTRIPLE crtPixel = img_copy[h][w];
             avgRed += crtPixel.rgbtRed;
             avgGreen += crtPixel.rgbtGreen;
