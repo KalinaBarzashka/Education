@@ -2,6 +2,7 @@
 #include <math.h>
 
 int get_less(int value);
+void make_copy(int height, int width, RGBTRIPLE image[height][width], RGBTRIPLE img_copy[height][width]);
 
 // Convert image to grayscale
 void grayscale(int height, int width, RGBTRIPLE image[height][width])
@@ -74,9 +75,9 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
         //each column / pixel
         for (int w = 0, i = width / 2; w < i; w++)
         {
-            RGBTRIPLE tmpPixel = image[h][w];
+            RGBTRIPLE tmp_pixel = image[h][w];
             image[h][w] = image[h][width - w - 1];
-            image[h][width - w - 1] = tmpPixel;
+            image[h][width - w - 1] = tmp_pixel;
         }
     }
 
@@ -88,13 +89,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
 {
     //make a cory of the image
     RGBTRIPLE img_copy[height][width];
-    for (int h = 0; h < height; h++)
-    {
-        for (int w = 0; w < width; w++)
-        {
-            img_copy[h][w] = image[h][w];
-        }
-    }
+    make_copy(height, width, image, img_copy);
 
     //each row
     for (int h = 0; h < height; h++)
@@ -194,4 +189,15 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
 
 
     return;
+}
+
+void make_copy(int height, int width, RGBTRIPLE image[height][width], RGBTRIPLE img_copy[height][width])
+{
+    for (int h = 0; h < height; h++)
+    {
+        for (int w = 0; w < width; w++)
+        {
+            img_copy[h][w] = image[h][w];
+        }
+    }
 }
