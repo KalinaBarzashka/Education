@@ -137,6 +137,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                 crtLeft = image[h][w - 1];
             }
 
+            int counter = 0;
             
         }
     }
