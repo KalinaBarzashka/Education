@@ -3,7 +3,7 @@
 
 int get_less(int value);
 void make_copy(int height, int width, RGBTRIPLE image[height][width], RGBTRIPLE img_copy[height][width]);
-void add_to_avg(int height, int width, RGBTRIPLE image[height][width], int *avgRed, int *avgGreen, int *avgBlue, double *counter);
+//void add_to_avg(int height, int width, RGBTRIPLE image[height][width], int *avgRed, int *avgGreen, int *avgBlue, double *counter);
 
 // Convert image to grayscale
 void grayscale(int height, int width, RGBTRIPLE image[height][width])
@@ -85,15 +85,6 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
     return;
 }
 
-void add_to_avg(int height, int width, RGBTRIPLE image[height][width], int *avgRed, int *avgGreen, int *avgBlue, double *counter)
-{
-    RGBTRIPLE pixel = image[height][width];
-    *avgRed = *avgRed + pixel.rgbtRed;
-    *avgGreen = *avgGreen + pixel.rgbtGreen;
-    *avgBlue = *avgBlue + pixel.rgbtBlue;
-    *counter = *counter + 1;
-}
-
 // Blur image
 void blur(int height, int width, RGBTRIPLE image[height][width])
 {
@@ -114,12 +105,12 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             int avgGreen = 0;
             int avgBlue = 0;
 
-            add_to_avg(h, w, img_copy, &avgRed, &avgGreen, &avgBlue, &counter);
-            //RGBTRIPLE crtPixel = img_copy[h][w];
-            //avgRed += crtPixel.rgbtRed;
-            //avgGreen += crtPixel.rgbtGreen;
-            //avgBlue += crtPixel.rgbtBlue;
-            //counter++;
+            //add_to_avg(h, w, img_copy, &avgRed, &avgGreen, &avgBlue, &counter);
+            RGBTRIPLE crtPixel = img_copy[h][w];
+            avgRed += crtPixel.rgbtRed;
+            avgGreen += crtPixel.rgbtGreen;
+            avgBlue += crtPixel.rgbtBlue;
+            counter++;
 
             //top and bottom row pixels
             if (h - 1 >= 0) //check if we have top row
@@ -220,3 +211,12 @@ void make_copy(int height, int width, RGBTRIPLE image[height][width], RGBTRIPLE 
         }
     }
 }
+
+//void add_to_avg(int height, int width, RGBTRIPLE image[height][width], int *avgRed, int *avgGreen, int *avgBlue, double *counter)
+//{
+//    RGBTRIPLE pixel = image[height][width];
+//    *avgRed = *avgRed + pixel.rgbtRed;
+//    *avgGreen = *avgGreen + pixel.rgbtGreen;
+//    *avgBlue = *avgBlue + pixel.rgbtBlue;
+//    *counter = *counter + 1;
+//}
