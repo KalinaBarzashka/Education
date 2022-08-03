@@ -170,17 +170,10 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
         for (int w = 0; w < width; w++)
         {
             //rgbtBlue/rgbtGreen/rgbtRed
-            double counter = 0.0;
             //new avg colors
             int avgRed = 0;
             int avgGreen = 0;
             int avgBlue = 0;
-
-            RGBTRIPLE crtPixel = img_copy[h][w];
-            avgRed += crtPixel.rgbtRed;
-            avgGreen += crtPixel.rgbtGreen;
-            avgBlue += crtPixel.rgbtBlue;
-            counter++;
 
             //top and bottom row pixels
             if (h - 1 >= 0) //check if we have top row
