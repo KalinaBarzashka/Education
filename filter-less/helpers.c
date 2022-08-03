@@ -18,6 +18,7 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width])
             image[h][w].rgbtRed = sum;
         }
     }
+
     return;
 }
 
