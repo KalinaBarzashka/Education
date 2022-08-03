@@ -171,62 +171,76 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
         {
             //rgbtBlue/rgbtGreen/rgbtRed
             //new avg colors
-            int avgRed = 0;
-            int avgGreen = 0;
-            int avgBlue = 0;
+            int avg_gx_red = 0;
+            int avg_gx_green = 0;
+            int avg_gx_blue = 0;
+
+            int avg_gy_red = 0;
+            int avg_gy_green = 0;
+            int avg_gy_blue = 0;
 
             //top and bottom row pixels
             if (h - 1 >= 0) //check if we have top row
             {
                 RGBTRIPLE topMiddle = img_copy[h - 1][w];
-                avgRed += topMiddle.rgbtRed;
-                avgGreen += topMiddle.rgbtGreen;
-                avgBlue += topMiddle.rgbtBlue;
-                counter++;
+                avg_gy_red += topMiddle.rgbtRed * (-2);
+                avg_gy_green += topMiddle.rgbtGreen * (-2);
+                avg_gy_blue += topMiddle.rgbtBlue * (-2);
 
                 if (w - 1 >= 0) //check if we have top left pixel
                 {
                     RGBTRIPLE topLeft = img_copy[h - 1][w - 1];
-                    avgRed += topLeft.rgbtRed;
-                    avgGreen += topLeft.rgbtGreen;
-                    avgBlue += topLeft.rgbtBlue;
-                    counter++;
+                    avg_gx_red += topLeft.rgbtRed * (-1);
+                    avg_gx_green += topLeft.rgbtGreen * (-1);
+                    avg_gx_blue += topLeft.rgbtBlue * (-1);
+
+                    avg_gy_red += topLeft.rgbtRed * (-1);
+                    avg_gy_green += topLeft.rgbtGreen * (-1);
+                    avg_gy_blue += topLeft.rgbtBlue * (-1);
                 }
 
                 if (w + 1 < width) //check if we have top right pixel
                 {
                     RGBTRIPLE topRight = img_copy[h - 1][w + 1];
-                    avgRed += topRight.rgbtRed;
-                    avgGreen += topRight.rgbtGreen;
-                    avgBlue += topRight.rgbtBlue;
-                    counter++;
+                    avg_gx_red += topRight.rgbtRed;
+                    avg_gx_green += topRight.rgbtGreen;
+                    avg_gx_blue += topRight.rgbtBlue;
+
+                    avg_gy_red += topRight.rgbtRed * (-1);
+                    avg_gy_green += topRight.rgbtGreen * (-1);
+                    avg_gy_blue += topRight.rgbtBlue * (-1);
                 }
             }
 
             if (h + 1 < height) //check if we have bottom row
             {
                 RGBTRIPLE bottomMiddle = img_copy[h + 1][w];
-                avgRed += bottomMiddle.rgbtRed;
-                avgGreen += bottomMiddle.rgbtGreen;
-                avgBlue += bottomMiddle.rgbtBlue;
-                counter++;
+                avg_gy_red += bottomMiddle.rgbtRed * 2;
+                avg_gy_green += bottomMiddle.rgbtGreen * 2;
+                avg_gy_blue += bottomMiddle.rgbtBlue * 2;
 
                 if (w - 1 >= 0) //check if we have bottom left pixel
                 {
                     RGBTRIPLE bottomLeft = img_copy[h + 1][w - 1];
-                    avgRed += bottomLeft.rgbtRed;
-                    avgGreen += bottomLeft.rgbtGreen;
-                    avgBlue += bottomLeft.rgbtBlue;
-                    counter++;
+                    avg_gx_red += bottomLeft.rgbtRed * (-1);
+                    avg_gx_green += bottomLeft.rgbtGreen * (-1);
+                    avg_gx_blue += bottomLeft.rgbtBlue * (-1);
+
+                    avg_gy_red += bottomLeft.rgbtRed;
+                    avg_gy_green += bottomLeft.rgbtGreen;
+                    avg_gy_blue += bottomLeft.rgbtBlue;
                 }
 
                 if (w + 1 < width) //check if we have top right pixel
                 {
                     RGBTRIPLE bottomRight = img_copy[h + 1][w + 1];
-                    avgRed += bottomRight.rgbtRed;
-                    avgGreen += bottomRight.rgbtGreen;
-                    avgBlue += bottomRight.rgbtBlue;
-                    counter++;
+                    avg_gx_red += bottomRight.rgbtRed;
+                    avg_gx_green += bottomRight.rgbtGreen;
+                    avg_gx_blue += bottomRight.rgbtBlue;
+
+                    avg_gy_red += bottomRight.rgbtRed;
+                    avg_gy_green += bottomRight.rgbtGreen;
+                    avg_gy_blue += bottomRight.rgbtBlue;
                 }
             }
 
@@ -234,24 +248,18 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
             if (w + 1 < width)
             {
                 RGBTRIPLE crtRight = img_copy[h][w + 1];
-                avgRed += crtRight.rgbtRed;
-                avgGreen += crtRight.rgbtGreen;
-                avgBlue += crtRight.rgbtBlue;
-                counter++;
+                avg_gx_red += crtRight.rgbtRed * 2;
+                avg_gx_green += crtRight.rgbtGreen * 2;
+                avg_gx_blue += crtRight.rgbtBlue * 2;
             }
 
             if (w - 1 >= 0)
             {
                 RGBTRIPLE crtLeft = img_copy[h][w - 1];
-                avgRed += crtLeft.rgbtRed;
-                avgGreen += crtLeft.rgbtGreen;
-                avgBlue += crtLeft.rgbtBlue;
-                counter++;
+                avg_gx_red += crtLeft.rgbtRed * (-2);
+                avg_gx_green += crtLeft.rgbtGreen * (-2);
+                avg_gx_blue += crtLeft.rgbtBlue * (-2);
             }
-
-            avgRed = round(avgRed / counter);
-            avgGreen = round(avgGreen / counter);
-            avgBlue = round(avgBlue / counter);
 
             image[h][w].rgbtRed = avgRed;
             image[h][w].rgbtGreen = avgGreen;
