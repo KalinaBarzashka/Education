@@ -51,7 +51,11 @@ bool load(const char *dictionary)
         return false;
     }
 
-    fread(n, );
+    while (fread(n->word, ))
+    {
+        strcpy(n->word, "");
+        n->next = NULL;
+    }
 
     fclose(dict);
     return true;
