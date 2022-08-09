@@ -113,7 +113,8 @@ bool unload(void)
         node *n = table[i];
         unload_linked_list(n);
     }
-    return false;
+
+    return true;
 }
 
 void unload_linked_list(node *n)
