@@ -26,6 +26,10 @@ node *table[N];
 // Returns true if word is in dictionary, else false
 bool check(const char *word)
 {
+    //make word lowercase
+    char *lower_word = malloc(sizeof(word));
+    for (int i = 0; i < )
+
     // has word, find index in hash table
     int index = hash(tolower(word));
     node *n = table[index];
