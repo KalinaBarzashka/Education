@@ -108,8 +108,22 @@ unsigned int size(void)
 // Unloads dictionary from memory, returning true if successful, else false
 bool unload(void)
 {
+    for (int i = 0; i < N; i++)
+    {
+        node *n = table[i];
 
+    }
     return false;
+}
+
+void unload_linked_list(node *n)
+{
+    while (n->next != NULL)
+    {
+        unload_linked_list(n->next);
+    }
+
+    free(n);
 }
 
 bool traverse_find_word(node *n, const char *word)
