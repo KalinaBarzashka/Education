@@ -76,6 +76,8 @@ bool load(const char *dictionary)
         node *n = malloc(sizeof(node));
         if (n == NULL)
         {
+            fclose(dict);
+            free(n);
             return false;
         }
 
