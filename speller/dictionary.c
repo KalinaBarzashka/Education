@@ -51,6 +51,8 @@ bool load(const char *dictionary)
         return false;
     }
 
+    fread(n, );
+
     fclose(dict);
     return true;
 }
