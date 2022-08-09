@@ -90,7 +90,7 @@ bool load(const char *dictionary)
         }
         else
         {
-            n->next = table[index];//first element in the linked list
+            n->next = table[index]; //first element in the linked list
         }
 
         table[index] = n;
