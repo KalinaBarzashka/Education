@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <strings.h>
 
 #include "dictionary.h"
 
@@ -35,6 +36,8 @@ bool check(const char *word)
 
     // has word, find index in hash table
     int index = hash(lower_word);
+    free(lower_word);
+
     node *n = table[index];
     //if there are no nodes
     if (n == NULL)
