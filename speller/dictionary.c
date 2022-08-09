@@ -44,17 +44,20 @@ bool load(const char *dictionary)
     {
         return false;
     }
-
-    node *n = malloc(sizeof(node));
-    if (n == NULL)
+    char *word = NULL;
+    while (fread(word, 1, 1, dict))
     {
-        return false;
-    }
+        node *n = malloc(sizeof(node));
+        if (n == NULL)
+        {
+            return false;
+        }
 
-    while (fread(n->word, ))
-    {
-        strcpy(n->word, "");
+        int index = hash(word);
+        strcpy(n->word, word);
         n->next = NULL;
+
+        table[index] = n;
     }
 
     fclose(dict);
