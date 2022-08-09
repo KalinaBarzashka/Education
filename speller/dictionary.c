@@ -14,8 +14,7 @@ typedef struct node
 {
     char word[LENGTH + 1];
     struct node *next;
-}
-node;
+} node;
 
 // TODO: Choose number of buckets in hash table
 const unsigned int N = 26;
@@ -24,15 +23,15 @@ int words_count = 0;
 // Hash table
 node *table[N];
 
-//traverse function
+// traverse function
 bool traverse_find_word(node *n, const char *word);
-//free linked lists
+// free linked lists
 void unload_linked_list(node *n);
 
 // Returns true if word is in dictionary, else false
 bool check(const char *word)
 {
-    //make word lowercase
+    // make word lowercase
     char *lower_word = malloc(sizeof(word));
     for (int i = 0, n = strlen(word); i < n; i++)
     {
@@ -44,7 +43,7 @@ bool check(const char *word)
     free(lower_word);
 
     node *n = table[index];
-    //if there are no nodes
+    // if there are no nodes
     if (n == NULL)
     {
         return false;
@@ -90,7 +89,7 @@ bool load(const char *dictionary)
         }
         else
         {
-            n->next = table[index]; //first element in the linked list
+            n->next = table[index]; // first element in the linked list
         }
 
         table[index] = n;
