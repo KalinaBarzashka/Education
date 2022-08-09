@@ -24,6 +24,9 @@ int words_count = 0;
 // Hash table
 node *table[N];
 
+//traverse function
+bool traverse_find_word(node *n, const char *word);
+
 // Returns true if word is in dictionary, else false
 bool check(const char *word)
 {
@@ -45,16 +48,7 @@ bool check(const char *word)
         return false;
     }
 
-    do
-    {
-        if (strcasecmp(word, n->word) == 0)
-        {
-            return true;
-        }
-    }
-    while (n->next != NULL);
-
-    return false;
+    return traverse_find_word(n, word);
 }
 
 // Hashes word to a number
@@ -114,5 +108,19 @@ unsigned int size(void)
 bool unload(void)
 {
     // TODO
+    return false;
+}
+
+bool traverse_find_word(node *n, const char *word)
+{
+    do
+    {
+        if (strcasecmp(word, n->word) == 0)
+        {
+            return true;
+        }
+    }
+    while (n->next != NULL);
+
     return false;
 }
