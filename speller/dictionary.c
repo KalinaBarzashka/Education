@@ -118,15 +118,11 @@ bool traverse_find_word(node *n, const char *word)
         return true;
     }
 
-    
-    do
+    if (n->next != NULL)
     {
-        if (strcasecmp(word, n->word) == 0)
-        {
-            return true;
-        }
+        n = n->next;
+        return traverse_find_word(n, word);
     }
-    while (n->next != NULL);
 
     return false;
 }
