@@ -125,7 +125,7 @@ bool unload(void)
 
 void unload_linked_list(node *n)
 {
-    while (n->next != NULL)
+    if (n->next != NULL)
     {
         unload_linked_list(n->next);
     }
