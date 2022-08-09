@@ -114,7 +114,10 @@ bool unload(void)
     for (int i = 0; i < N; i++)
     {
         node *n = table[i];
-        unload_linked_list(n);
+        if (n != NULL)
+        {
+            unload_linked_list(n);
+        }
     }
 
     return true;
