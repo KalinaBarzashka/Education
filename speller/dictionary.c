@@ -86,14 +86,14 @@ bool load(const char *dictionary)
 
         if (table[index] == NULL)
         {
-            table[index] = n;
+            n->next = NULL;
         }
         else
         {
             n->next = table[index];//first element in the linked list
-            table[index] = n;
         }
 
+        table[index] = n;
         free(n);
         words_count++;
     }
