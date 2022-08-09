@@ -26,7 +26,24 @@ node *table[N];
 // Returns true if word is in dictionary, else false
 bool check(const char *word)
 {
-    // TODO
+    // has word, find index in hash table
+    int index = hash(tolower(word));
+    node *n = table[index];
+    //if there are no nodes
+    if (n == NULL)
+    {
+        return false;
+    }
+
+    do
+    {
+        if (strcasecmp(word, n->word) == 0)
+        {
+            return true;
+        }
+    }
+    while (n->next != NULL);
+
     return false;
 }
 
