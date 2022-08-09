@@ -32,7 +32,7 @@ void unload_linked_list(node *n);
 bool check(const char *word)
 {
     // make word lowercase
-    int length = strlen(word)
+    int length = strlen(word);
     char lower_word[length + 1];
     for (int i = 0; i < length; i++)
     {
