@@ -113,6 +113,12 @@ bool unload(void)
 
 bool traverse_find_word(node *n, const char *word)
 {
+    if (strcasecmp(word, n->word) == 0)
+    {
+        return true;
+    }
+
+    
     do
     {
         if (strcasecmp(word, n->word) == 0)
