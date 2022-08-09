@@ -44,8 +44,9 @@ bool load(const char *dictionary)
     {
         return false;
     }
+
     char *word = NULL;
-    while (fread(word, 1, 1, dict))
+    while (fscanf(dict, "%s", word) != "EOF") //fread(word, 1, 1, dict)
     {
         node *n = malloc(sizeof(node));
         if (n == NULL)
