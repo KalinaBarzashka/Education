@@ -28,10 +28,13 @@ bool check(const char *word)
 {
     //make word lowercase
     char *lower_word = malloc(sizeof(word));
-    for (int i = 0; i < )
+    for (int i = 0, n = strlen(word); i < n; i++)
+    {
+        lower_word[i] = tolower(word[i]);
+    }
 
     // has word, find index in hash table
-    int index = hash(tolower(word));
+    int index = hash(lower_word);
     node *n = table[index];
     //if there are no nodes
     if (n == NULL)
