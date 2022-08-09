@@ -93,7 +93,7 @@ bool load(const char *dictionary)
         }
 
         table[index] = n;
-        free(n);
+        //free(n);
         words_count++;
     }
 
