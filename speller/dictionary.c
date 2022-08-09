@@ -26,6 +26,8 @@ node *table[N];
 
 //traverse function
 bool traverse_find_word(node *n, const char *word);
+//free linked lists
+void unload_linked_list(node *n);
 
 // Returns true if word is in dictionary, else false
 bool check(const char *word)
