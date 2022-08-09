@@ -55,10 +55,17 @@ bool load(const char *dictionary)
         }
 
         strcpy(n->word, word);
-        n->next = NULL;
         int index = hash(word);
 
-        table[index] = n;
+        if (table[index] == NULL)
+        {
+            table[index] = n;
+        }
+        else
+        {
+            n->next = table[index];//first element in the linked list
+            table[index] = n;
+        }
     }
 
     fclose(dict);
