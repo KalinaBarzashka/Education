@@ -90,6 +90,7 @@ bool load(const char *dictionary)
             table[index] = n;
         }
 
+        free(n);
         words_count++;
     }
 
@@ -107,7 +108,7 @@ unsigned int size(void)
 // Unloads dictionary from memory, returning true if successful, else false
 bool unload(void)
 {
-    // TODO
+
     return false;
 }
 
