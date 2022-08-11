@@ -1,4 +1,5 @@
 from cs50 import get_float
+from math import floor
 
 def main():
     coins = 0
@@ -24,15 +25,15 @@ def main():
     print(coins)
 
 def calculate_quarters(change):
-    return change / 0.25
+    return floor(change / 0.25)
 
 def calculate_dimes(change):
-    return change / 0.10
+    return floor(change / 0.10)
 
 def calculate_nickels(change):
-    return change / 0.05
+    return floor(change / 0.05)
 
 def calculate_pennies(change):
-    return change / 0.01
+    return floor(change / 0.01)
 
 main()
