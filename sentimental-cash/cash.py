@@ -10,15 +10,15 @@ def main():
         change = get_float("Change owed: ")
 
     quarters = calculate_quarters(change)
-    change = change - quarters * 0.25
+    change = round(change - quarters * 0.25, 2)
     coins += quarters
 
     dimes = calculate_dimes(change)
-    change = change - dimes * 0.10
+    change = round(change - dimes * 0.10)
     coins += dimes
 
     nickels = calculate_nickels(change)
-    change = change - change * 0.05
+    change = round(change - change * 0.05)
     coins += nickels
 
     coins += calculate_pennies(change)
