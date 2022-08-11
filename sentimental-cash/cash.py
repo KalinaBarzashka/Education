@@ -1,7 +1,5 @@
 from cs50 import get_float
 
-
-
 def main():
     coins = 0
     change = get_float("Change owed: ")
