@@ -18,7 +18,7 @@ def main():
     coins += dimes
 
     nickels = calculate_nickels(change)
-    change = round(change - change * 0.05, 2)
+    change = round(change - nickels * 0.05, 2)
     coins += nickels
 
     coins += calculate_pennies(change)
