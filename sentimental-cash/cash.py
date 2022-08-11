@@ -14,11 +14,11 @@ def main():
     coins += quarters
 
     dimes = calculate_dimes(change)
-    change = round(change - dimes * 0.10)
+    change = round(change - dimes * 0.10, 2)
     coins += dimes
 
     nickels = calculate_nickels(change)
-    change = round(change - change * 0.05)
+    change = round(change - change * 0.05, 2)
     coins += nickels
 
     coins += calculate_pennies(change)
