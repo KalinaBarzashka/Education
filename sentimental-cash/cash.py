@@ -10,12 +10,18 @@ def main():
     while change < 0:
         change = get_float("Change owed: ")
 
-    coins += calculate_quarters(change)
-    change = change - change / 0.25
-    coins += calculate_dimes(change)
-    change = change - change / 0.10
-    coins += calculate_nickels(change)
-    change = change - change / 0.05
+    quarters = calculate_quarters(change)
+    change = change - quarters * 0.25
+    coins += quarters
+
+    dimes = calculate_dimes(change)
+    change = change - dimes * 0.10
+    coins += dimes
+
+    nickels = calculate_nickels(change)
+    change = change - change * 0.05
+    coins += nickels
+
     coins += calculate_pennies(change)
     print(coins)
 
