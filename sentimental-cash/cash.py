@@ -11,8 +11,11 @@ def main():
         change = get_float("Change owed: ")
 
     coins += calculate_quarters(change)
+    change = change - change / 0.25
     coins += calculate_dimes(change)
+    change = change - change / 0.10
     coins += calculate_nickels(change)
+    change = change - change / 0.05
     coins += calculate_pennies(change)
     print(coins)
 
