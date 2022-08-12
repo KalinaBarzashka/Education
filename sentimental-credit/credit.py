@@ -6,11 +6,62 @@
 import re
 from cs50 import get_string
 
-card_number = get_string("Number: ")
-length = len(card_number)
-card_num_int = int(card_number)
-first_number = int(card_number[0])
-second_number = int(card_number[1])
+
+def main():
+    card_number = get_string("Number: ")
+    length = len(card_number)
+    card_num_int = int(card_number)
+    first_number = int(card_number[0])
+    second_number = int(card_number[1])
+
+    valid = checksum(card_num_int, length)
+
+    if valid == True:
+        if (length_of_number == 15 and first_number == 3 and (second_number == 4 or second_number == 7)):
+            print("AMEX\n")
+        elif ((length_of_number == 13 or length_of_number == 16) and first_number == 4):
+            print("VISA\n")
+        elif (length_of_number == 16 and first_number == 5 and (second_number == 1 or second_number == 2 or second_number == 3 or second_number == 4 or second_number == 5)):
+            print("MASTERCARD\n")
+        else:
+            print("INVALID\n")
+    else:
+        print("INVALID\n")
 
 
-print(card_num_int)
+def checksum(card_number, length_of_number):
+    # sum of multiplied numbers
+    sum_from_multiplication = 0
+    # temp variable to store multiplied number, so if > 9 we can get the separate digits
+    temp = 0
+    # sum of other digits
+    sum_not_multiplied = 0
+
+    for i in range(length_of_number):
+        # sum every even digit
+        if i % 2 == 0:
+            sum_not_multiplied = sum_not_multiplied + (card_number % 10)
+        # multiply every other digit starting from the second to last
+        else:
+            temp = (card_number % 10) * 2
+
+            if temp > 9:
+                sum_from_multiplication = sum_from_multiplication + temp % 10
+                temp = temp / 10
+                sum_from_multiplication = sum_from_multiplication + temp % 10
+            else:
+                sum_from_multiplication = sum_from_multiplication + temp
+
+        card_number = card_number / 10
+
+    # get final sum
+    final_sum = sum_from_multiplication + sum_not_multiplied
+
+    # get last digit from final sum
+    if final_sum % 10 == 0:
+        return True
+
+    return False
+
+
+main()
