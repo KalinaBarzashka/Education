@@ -43,6 +43,9 @@ def count_words(text):
 
 def count_sentences(text):
     count = 0
+    for i in range(len(text)):
+        symbol = text[i]
+        # check if symbol is a !(33), ?(63) or .(46)
     return count
 
 
