@@ -26,7 +26,7 @@ def count_words(text):
     count = 0
     for i in range(len(text)):
         symbol = text[i]
-        prev_symbol = i == 0 ? "" : text[i-1]
+        prev_symbol = "" if i==0 else text[i-1]
         # check if symbol is a space(32) and if the symbol before was not a space
         if isspace(symbol) and not isspace(prev_symbol):
             count += 1
@@ -47,6 +47,12 @@ def count_sentences(text):
     for i in range(len(text)):
         symbol = text[i]
         # check if symbol is a !(33), ?(63) or .(46)
+        has_exclam_mark = re.search("\?!", symbol)
+        has_quest_mark = re.search("\?", symbol)
+        has_dot = re.search("\.", symbol)
+
+        if has_exclam_mark == True or has_quest_mark == True or has_dot == True:
+            count += 1
     return count
 
 
