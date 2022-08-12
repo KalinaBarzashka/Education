@@ -1,4 +1,5 @@
 from cs50 import get_string
+import re
 
 def main():
     text = get_string("Text: ")
