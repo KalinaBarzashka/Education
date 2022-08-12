@@ -7,4 +7,5 @@ import re
 from cs50 import get_string
 
 card_number = get_string("Number: ")
-print(card_number)
+length = len(card_number)
+print(length)
