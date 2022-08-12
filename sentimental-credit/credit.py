@@ -8,9 +8,9 @@ from cs50 import get_string
 
 card_number = get_string("Number: ")
 length = len(card_number)
+card_num_int = int(card_number)
 first_number = int(card_number[0])
 second_number = int(card_number[1])
 
 
-print(first_number)
-print(second_number)
+print(card_num_int)
