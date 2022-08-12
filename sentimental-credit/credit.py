@@ -56,6 +56,9 @@ def checksum(card_number, length):
 
     # get final sum
     final_sum = sum_from_multiplication + sum_not_multiplied
+    print(final_sum)
+    print(sum_from_multiplication)
+    print(sum_not_multiplied)
 
     # get last digit from final sum
     if final_sum % 10 == 0:
