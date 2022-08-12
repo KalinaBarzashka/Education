@@ -5,6 +5,7 @@
 
 import re
 from cs50 import get_string
+from math import floor
 
 
 def main():
@@ -47,15 +48,12 @@ def checksum(card_number, length):
 
             if temp > 9:
                 sum_from_multiplication = sum_from_multiplication + temp % 10
-                temp = round(temp / 10)
+                temp = floor(temp / 10)
                 sum_from_multiplication = sum_from_multiplication + temp % 10
             else:
                 sum_from_multiplication = sum_from_multiplication + temp
 
-        card_number = round(card_number / 10)
-        print(f"card number: {card_number}")
-        print(f"card number divided: {card_number / 10}")
-        print(f"card number divided and rounded: {round(card_number / 10)}")
+        card_number = floor(card_number / 10)
 
     # get final sum
     final_sum = sum_from_multiplication + sum_not_multiplied
