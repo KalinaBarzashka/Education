@@ -38,9 +38,6 @@ def checksum(card_number, length):
     sum_not_multiplied = 0
 
     for i in range(length):
-        print(card_number % 10)
-        print(card_number / 10)
-        continue
         # sum every even digit
         if i % 2 == 0:
             sum_not_multiplied = sum_not_multiplied + (card_number % 10)
@@ -50,12 +47,12 @@ def checksum(card_number, length):
 
             if temp > 9:
                 sum_from_multiplication = sum_from_multiplication + temp % 10
-                temp = temp / 10
+                temp = round(temp / 10)
                 sum_from_multiplication = sum_from_multiplication + temp % 10
             else:
                 sum_from_multiplication = sum_from_multiplication + temp
 
-        card_number = card_number / 10
+        card_number = round(card_number / 10)
 
     # get final sum
     final_sum = sum_from_multiplication + sum_not_multiplied
