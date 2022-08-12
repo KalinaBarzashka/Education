@@ -1,5 +1,5 @@
 from cs50 import get_string
-import re
+
 
 def main():
     text = get_string("Text: ")
@@ -41,7 +41,7 @@ def count_words(text):
     lenght = len(text)
     for i in range(lenght):
         symbol = text[i]
-        prev_symbol = "" if i==0 else text[i-1]
+        prev_symbol = "" if i == 0 else text[i-1]
         # check if symbol is a space(32) and if the symbol before was not a space
         if symbol.isspace() and not prev_symbol.isspace():
             count += 1
