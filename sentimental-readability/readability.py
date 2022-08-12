@@ -25,7 +25,7 @@ def count_words(text):
     count = 0
     for i in range(len(text)):
         symbol = text[i]
-        prev_symbol = text[i-1]
+        prev_symbol = i == 0 ? "" : text[i-1]
         # check if symbol is a space(32) and if the symbol before was not a space
         if isspace(symbol) and not isspace(prev_symbol):
             count += 1
