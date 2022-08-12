@@ -3,7 +3,6 @@
 # Visa - 13 and 16-digit numbers - 4
 # checksum
 
-import re
 from cs50 import get_string
 from math import floor
 
