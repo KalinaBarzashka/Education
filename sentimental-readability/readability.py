@@ -16,7 +16,7 @@ def count_letters(text):
     for i in range(len(text)):
         symbol = text[i]
         # check if symbol is a letter
-        if isalpha(symbol):
+        if symbol.isalpha():
             count += 1
 
     return count
@@ -28,14 +28,14 @@ def count_words(text):
         symbol = text[i]
         prev_symbol = "" if i==0 else text[i-1]
         # check if symbol is a space(32) and if the symbol before was not a space
-        if isspace(symbol) and not isspace(prev_symbol):
+        if symbol.isspace() and not prev_symbol.isspace():
             count += 1
 
     # check if text starts with space and if it does substract one
-    if isspace(text[0]):
+    if text[0].isspace():
         count -= 1
     # check if text ends with space and if it does substract one
-    if isspace(text[n - 1]):
+    if text[n - 1].isspace():
         count -= 1
 
     # return count + 1 for the last word in the sentance
