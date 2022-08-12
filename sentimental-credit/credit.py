@@ -17,11 +17,11 @@ def main():
     valid = checksum(card_num_int, length)
 
     if valid == True:
-        if (length_of_number == 15 and first_number == 3 and (second_number == 4 or second_number == 7)):
+        if (length == 15 and first_number == 3 and (second_number == 4 or second_number == 7)):
             print("AMEX\n")
-        elif ((length_of_number == 13 or length_of_number == 16) and first_number == 4):
+        elif ((length == 13 or length == 16) and first_number == 4):
             print("VISA\n")
-        elif (length_of_number == 16 and first_number == 5 and (second_number == 1 or second_number == 2 or second_number == 3 or second_number == 4 or second_number == 5)):
+        elif (length == 16 and first_number == 5 and (second_number == 1 or second_number == 2 or second_number == 3 or second_number == 4 or second_number == 5)):
             print("MASTERCARD\n")
         else:
             print("INVALID\n")
@@ -29,7 +29,7 @@ def main():
         print("INVALID\n")
 
 
-def checksum(card_number, length_of_number):
+def checksum(card_number, length):
     # sum of multiplied numbers
     sum_from_multiplication = 0
     # temp variable to store multiplied number, so if > 9 we can get the separate digits
@@ -37,7 +37,8 @@ def checksum(card_number, length_of_number):
     # sum of other digits
     sum_not_multiplied = 0
 
-    for i in range(length_of_number):
+    for i in range(length):
+        print(i % 2)
         # sum every even digit
         if i % 2 == 0:
             sum_not_multiplied = sum_not_multiplied + (card_number % 10)
