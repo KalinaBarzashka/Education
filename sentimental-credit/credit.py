@@ -42,6 +42,7 @@ def checksum(card_number, length):
         # sum every even digit
         if i % 2 == 0:
             sum_not_multiplied = sum_not_multiplied + (card_number % 10)
+            print(card_number % 10)
         # multiply every other digit starting from the second to last
         else:
             temp = (card_number % 10) * 2
