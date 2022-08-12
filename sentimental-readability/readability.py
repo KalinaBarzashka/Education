@@ -44,17 +44,19 @@ def count_words(text):
         count -= 1
 
     # return count + 1 for the last word in the sentance
-    return count
+    return count + 1
 
 
 def count_sentences(text):
     count = 0
     for i in range(len(text)):
         symbol = text[i]
+        print(symbol)
         # check if symbol is a !(33), ?(63) or .(46)
-        has_exclam_mark = re.search("\?!", symbol)
+        has_exclam_mark = re.search("\!", symbol)
         has_quest_mark = re.search("\?", symbol)
         has_dot = re.search("\.", symbol)
+        has
 
         if has_exclam_mark == True or has_quest_mark == True or has_dot == True:
             count += 1
