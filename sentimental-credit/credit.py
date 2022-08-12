@@ -38,8 +38,8 @@ def checksum(card_number, length):
     sum_not_multiplied = 0
 
     for i in range(length):
-        print(i % 2)
         print(card_number % 10)
+        print(card_number / 10)
         continue
         # sum every even digit
         if i % 2 == 0:
