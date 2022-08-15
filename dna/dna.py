@@ -35,10 +35,20 @@ def main():
     for key in data:
         persons_seq = data[key]
 
-        for i in range(len(persons_seq)):
-        print(persons_seq)
-        print(matches)
+        # traverse each STR in longest match
+        counter = 0
+        match = True
+        for key in matches:
+            if matches[key] != persons_seq[counter]:
+                match = False
+                break
+            counter += 1
 
+        if match == True:
+            print(key)
+            exit(0)
+
+    print("No match")
     return
 
 
