@@ -2,7 +2,6 @@
   "extensions": [
     "/opt/cs50/extensions/cs50-0.0.1.vsix", 
     "/opt/cs50/extensions/phpliteadmin-0.0.1.vsix", 
-    "/opt/cs50/extensions/gitdoc-0.0.9.vsix", 
     "/opt/cs50/extensions/workspace-layout-0.0.7.vsix", 
     "cs50.ddb50", 
     "cs50.extension-uninstaller", 
@@ -11,9 +10,10 @@
     "ms-vscode.cpptools", 
     "ms-vscode.hexeditor", 
     "ms-vsliveshare.vsliveshare-pack", 
-    "tomoki1207.pdf"
+    "tomoki1207.pdf", 
+    "vsls-contrib.gitdoc"
   ], 
-  "image": "ghcr.io/cs50/codespace:bf4064f7fb28ce013e6c4585ed3f400992a682fb", 
+  "image": "ghcr.io/cs50/codespace:c09711969f19a7a719d177419bf12822cc579728", 
   "postCreateCommand": "/opt/cs50/bin/postCreateCommand", 
   "settings": {
     "C_Cpp.autocomplete": "Disabled", 
@@ -72,7 +72,7 @@
     "git.autofetch": true, 
     "git.decorations.enabled": false, 
     "gitdoc.autoPull": "off", 
-    "gitdoc.commitMessageFormat": "ddd, MMM D, YYYY, h:mm A Z", 
+    "gitdoc.commitMessageFormat": "ccc, LLL d, kkkk, h:mm a ZZ", 
     "gitdoc.commitValidationLevel": "none", 
     "gitdoc.enabled": true, 
     "gitdoc.pullOnOpen": false, 
