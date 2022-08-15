@@ -20,18 +20,24 @@ def main():
                 arr.append(row[i])
             data[row[0]] = arr
 
-    # TODO: Read DNA sequence file into a variable
+    # Read DNA sequence file into a variable
     sequence = ""
     with open(sys.argv[2], "r") as file:
         sequence = file.readline()
 
-    # TODO: Find longest match of each STR in DNA sequence
+    # Find longest match of each STR in DNA sequence
     matches = {}
     for i in range(1, header_len):
         longest_run = longest_match(sequence, header[i])
-        matches[header[i]] =longest_run
+        matches[header[i]] = longest_run
 
-    # TODO: Check database for matching profiles
+    # Check database for matching profiles
+    for key in data:
+        persons_seq = data[key]
+
+        for i in range(len(persons_seq)):
+        print(persons_seq)
+        print(matches)
 
     return
 
