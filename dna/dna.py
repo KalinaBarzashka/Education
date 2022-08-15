@@ -39,7 +39,7 @@ def main():
         counter = 0
         match = True
         for key_m in matches:
-            if matches[key_m] != persons_seq[counter]:
+            if matches[key_m] != int(persons_seq[counter]):
                 match = False
                 break
             counter += 1
