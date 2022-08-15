@@ -38,8 +38,8 @@ def main():
         # traverse each STR in longest match
         counter = 0
         match = True
-        for key in matches:
-            if matches[key] != persons_seq[counter]:
+        for key_m in matches:
+            if matches[key_m] != persons_seq[counter]:
                 match = False
                 break
             counter += 1
