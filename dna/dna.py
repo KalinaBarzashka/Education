@@ -13,6 +13,7 @@ def main():
     with open(sys.argv[1], "r") as file:
         reader = csv.reader(file)
         header = next(reader)
+        header_len = len(header)
         for row in reader:
             data.append(row)
             # data[row["name"]] = 1
@@ -22,7 +23,7 @@ def main():
     with open(sys.argv[2], "r") as file:
         sequence = file.readline()
 
-    print(data)
+    print(header_len)
 
     # TODO: Find longest match of each STR in DNA sequence
 
