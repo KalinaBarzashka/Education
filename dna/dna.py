@@ -13,7 +13,9 @@ def main():
     with open(sys.argv[1], "r") as file:
         reader = csv.DictReader(file)
         for row in reader:
-            print(row)
+            data.add(row)
+
+        print(data)
 
     # TODO: Read DNA sequence file into a variable
 
