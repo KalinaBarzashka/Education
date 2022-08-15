@@ -16,9 +16,11 @@ def main():
             data.append(row)
             # data[row["name"]] = 1
 
-        print(data)
-
     # TODO: Read DNA sequence file into a variable
+    sequence = ""
+    with open(sys.argv[2], "r") as file:
+        reader = reader(file)
+        sequence = next(reader)
 
     # TODO: Find longest match of each STR in DNA sequence
 
