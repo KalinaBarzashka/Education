@@ -11,8 +11,18 @@
             let list_items = document.querySelectorAll("li");
             for (let i = 0, n = list_items.length; i < n; i++)
             {
-              list_items[i].addEventListener('click', function(){
-                
+              list_items[i].addEventListener('click', function(e){
+                let li = e.currentTarget;
+                if (li.classList.contains("list-group-item-success"))
+                {
+                  li.classList.remove("list-group-item-success");
+                  li.classList.add("list-group-item-danger");
+                }
+                else
+                {
+                  li.classList.remove("list-group-item-danger");
+                  li.classList.add("list-group-item-success");
+                }
               });
             }
           });
@@ -47,6 +57,7 @@
         </header>
         <main>
           <h3>Shopping list</h3>
+          <h6>Select items to mark as bought or not.</h6>
           <ul class="list-group">
             <li class="list-group-item">1 Milk</li>
             <li class="list-group-item">5 Eggs</li>
