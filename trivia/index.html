@@ -9,30 +9,33 @@
             // TODO: Add code to check answers to questions
             function btnFirstQuestion(e)
             {
+                // select correct and incorrect msgs
                 correctMsg = document.querySelector("#correct");
                 incorrectMsg = document.querySelector("#incorrect");
                 correctMsg.style.display = "none";
                 incorrectMsg.style.display = "none";
 
+                // return all buttons to default background color
                 btns = document.querySelectorAll("button");
                 for (let i = 0; i < btns.length; i++)
                 {
-                    console.log(btns[i]);
+                    btns[i].style.backgroundColor = "#d9edff";
                 }
 
+                // place logic for right answer or not
                 let element = e.currentTarget;
-                console.log(element.innerText);
                 if (element.innerText == '100 Metres')
                 {
                     correctMsg.style.display = "block";
-                    element.style.backgroundColor = 'green';
+                    element.style.backgroundColor = "green";
                 }
                 else
                 {
                     incorrectMsg.style.display = "block";
-                    element.style.backgroundColor = 'red';
+                    element.style.backgroundColor = "red";
                 }
 
+                // prevet sending the form to server
                 e.preventDefault();
             }
         </script>
