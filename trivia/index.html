@@ -15,7 +15,10 @@
                 incorrectMsg.style.display = "none";
 
                 btns = document.querySelectorAll("button");
-                
+                for (let i = 0; i < btns.length; i++)
+                {
+                    console.log(btns[i]);
+                }
 
                 let element = e.currentTarget;
                 console.log(element.innerText);
@@ -45,7 +48,7 @@
                 <h3>In A Decathlon What Is The First Event?</h3>
                 <p hidden id="correct">Correct!</p>
                 <p hidden id="incorrect">Incorrect!</p>
-                <button onclick="btnFirstQuestion(event)">500 Metres</button>
+                <button onclick="btnFirstQuestion(event)" type="submit" >500 Metres</button>
                 <button onclick="btnFirstQuestion(event)">100 Metres</button>
                 <button onclick="btnFirstQuestion(event)">1 Kilometer</button>
                 <button onclick="btnFirstQuestion(event)">5 Kilometers</button>
