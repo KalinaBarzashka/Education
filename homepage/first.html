@@ -16,15 +16,13 @@
             console.log(tbody);
             pet_counter++;
 
-            let html = `
-                <tr>
+            let tr = document.createElement("tr");
+            tr.innerHtml = `
                   <th scope="row">1</th>
                   <td>Mark</td>
                   <td>Otto</td>
                   <td>@mdo</td>
-                </tr>
             `;
-
 
             // prevet sending the form to server
             e.preventDefault();
