@@ -16,18 +16,25 @@
             pet_counter++;
 
             let form = e.currentTarget.parentNode;
-            let pet_name = form.querySelector("#pet_name");
-            let pet_age = form.querySelector("#pet_age");
+            let pet_name = form.querySelector("#pet_name").value;
+            let pet_age = form.querySelector("#pet_age").value;
             let radio_btns = form.querySelectorAll('input[name="breed"]');
-            console.log(pet_name.innerText);
-            console.log(pet_age);
+            let breed = "";
+            for (let i = 0, n = radio_btns.length; i < n; i++)
+            {
+              if (radio_btns[i].checked)
+              {
+                console.log();
+              }
+            }
+
             console.log(radio_btns);
 
             let tr = document.createElement("tr");
             tr.innerHTML = `
                   <th scope="row">${pet_counter}</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
+                  <td>${pet_name}</td>
+                  <td>${pet_age}</td>
                   <td>@mdo</td>
             `;
 
