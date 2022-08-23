@@ -13,13 +13,13 @@
                 console.log(element.innerText);
                 if (element.innerText == '100 Metres')
                 {
-                    text = document.getElementById("correct");
+                    text = document.querySelector("#correct");
                     text.style.display = "block";
                     element.style.backgroundColor = 'green';
                 }
                 else
                 {
-                    text = document.getElementById("incorrect");
+                    text = document.querySelector("#incorrect");
                     text.style.display = "block";
                     element.style.backgroundColor = 'red';
                 }
