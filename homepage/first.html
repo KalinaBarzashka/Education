@@ -15,7 +15,10 @@
             tbody = document.querySelector("#tbody");
             pet_counter++;
 
-            console.log(e);
+            let form = e.currentTarget.parentNode;
+            let pet_name = form.querySelector("#pet_name");
+            let pet_age = form.querySelector("#pet_age");
+            console.log();
 
             let tr = document.createElement("tr");
             tr.innerHTML = `
@@ -62,13 +65,13 @@
         <main>
             <h3>Here is some temporary Database for registering pets.</h3>
             <form>
-                <div class="mb-3 pet-name">
+                <div class="mb-3 pet-details">
                     <label>Name: </label>
-                    <input type="text" />
+                    <input id="pet_name" type="text" />
                 </div>
-                <div class="mb-3 pet-name">
+                <div class="mb-3 pet-details">
                   <label>Age: </label>
-                  <input type="number" id="age" min="0" max="14" />
+                  <input id="pet_age" min="0" max="14" type="number" />
                 </div>
                 <div class="mb-3 container breed">
                   <div class="row">
