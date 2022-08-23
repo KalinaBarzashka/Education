@@ -24,7 +24,7 @@
 
                 // place logic for right answer or not
                 let element = e.currentTarget;
-                if (element.innerText == '100 Metres')
+                if (element.innerText === '100 Metres')
                 {
                     correctMsg.style.display = "block";
                     element.style.backgroundColor = "green";
@@ -51,7 +51,7 @@
                 let element = e.currentTarget;
                 let input = document.querySelector("input");
 
-                if (input.value.toLowerCase() == "darts")
+                if (input.value.toLowerCase() === "darts")
                 {
                     input.style.backgroundColor = "green";
                     correctMsg.style.display = "block";
