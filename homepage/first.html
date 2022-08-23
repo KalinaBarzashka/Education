@@ -13,21 +13,19 @@
           function add_pet(e)
           {
             tbody = document.querySelector("#tbody");
-            console.log(tbody);
             pet_counter++;
 
-            let div = document.createElement("div");
-            div.innerHtml = `
-                <tr>
-                  <th scope="row">1</th>
+            console.log(e);
+
+            let tr = document.createElement("tr");
+            tr.innerHTML = `
+                  <th scope="row">${pet_counter}</th>
                   <td>Mark</td>
                   <td>Otto</td>
                   <td>@mdo</td>
-                </tr>
             `;
-            console.log(div);
 
-            //tbody.appendChild(div.firstChild);
+            tbody.appendChild(tr);
 
             // prevet sending the form to server
             e.preventDefault();
