@@ -24,18 +24,16 @@
             {
               if (radio_btns[i].checked)
               {
-                console.log();
+                breed = radio_btns[i].defaultValue;
               }
             }
-
-            console.log(radio_btns);
 
             let tr = document.createElement("tr");
             tr.innerHTML = `
                   <th scope="row">${pet_counter}</th>
                   <td>${pet_name}</td>
                   <td>${pet_age}</td>
-                  <td>@mdo</td>
+                  <td>${breed}</td>
             `;
 
             tbody.appendChild(tr);
@@ -95,19 +93,19 @@
                   </div>
                   <div class="row">
                     <div class="col">
-                      <input class="form-check-input" id="dog" name="breed" type="radio" value="dog" />
+                      <input class="form-check-input" id="dog" name="breed" type="radio" value="Dog" />
                       <label for="dog">Dog</label>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col">
-                      <input class="form-check-input" id="bird" name="breed" type="radio" value="bird" />
+                      <input class="form-check-input" id="bird" name="breed" type="radio" value="Bird" />
                       <label for="bird">Bird</label>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col">
-                      <input class="form-check-input" id="other" name="breed" type="radio" value="other" />
+                      <input class="form-check-input" id="other" name="breed" type="radio" value="Other" />
                       <label for="other">Other</label>
                     </div>
                   </div>
