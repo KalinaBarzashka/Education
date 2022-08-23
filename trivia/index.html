@@ -10,13 +10,19 @@
             function btnFirstQuestion(e)
             {
                 let element = e.currentTarget;
-                if (element.innerHtml == '100 Metres')
+                console.log(element.innerText);
+                if (element.innerText == '100 Metres')
                 {
+                    text = document.getElementById("correct");
+                    text.style.display = "block";
                     element.style.backgroundColor = 'green';
                 }
-
-
-
+                else
+                {
+                    text = document.getElementById("incorrect");
+                    text.style.display = "block";
+                    element.style.backgroundColor = 'red';
+                }
             }
         </script>
     </head>
@@ -31,8 +37,8 @@
                 <hr>
                 <!-- TODO: Add multiple choice question here -->
                 <h3>In A Decathlon What Is The First Event?</h3>
-                <p hidden>Correct!</p>
-                <p hidden>Incorrect!</p>
+                <p hidden id="correct">Correct!</p>
+                <p hidden id="incorrect">Incorrect!</p>
                 <button onclick="btnFirstQuestion(event)">500 Metres</button>
                 <button onclick="btnFirstQuestion(event)">100 Metres</button>
                 <button onclick="btnFirstQuestion(event)">1 Kilometer</button>
