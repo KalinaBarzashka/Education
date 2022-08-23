@@ -9,18 +9,24 @@
             // TODO: Add code to check answers to questions
             function btnFirstQuestion(e)
             {
+                correctMsg = document.querySelector("#correct");
+                incorrectMsg = document.querySelector("#incorrect");
+                correctMsg.style.display = "none";
+                incorrectMsg.style.display = "none";
+
+                btns = document.querySelectorAll("button");
+                
+
                 let element = e.currentTarget;
                 console.log(element.innerText);
                 if (element.innerText == '100 Metres')
                 {
-                    text = document.querySelector("#correct");
-                    text.style.display = "block";
+                    correctMsg.style.display = "block";
                     element.style.backgroundColor = 'green';
                 }
                 else
                 {
-                    text = document.querySelector("#incorrect");
-                    text.style.display = "block";
+                    incorrectMsg.style.display = "block";
                     element.style.backgroundColor = 'red';
                 }
             }
