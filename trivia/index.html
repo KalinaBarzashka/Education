@@ -7,6 +7,11 @@
         <title>Trivia!</title>
         <script>
             // TODO: Add code to check answers to questions
+            function btnFirstQuestion(e)
+            {
+                let element = e.target;
+                console.log(element);
+            }
         </script>
     </head>
     <body>
@@ -19,6 +24,11 @@
                 <h2>Part 1: Multiple Choice </h2>
                 <hr>
                 <!-- TODO: Add multiple choice question here -->
+                <h3>In A Decathlon What Is The First Event?</h3>
+                <button onclick="btnFirstQuestion(event)">500 Metres</button>
+                <button onclick="btnFirstQuestion(event)">100 Metres</button>
+                <button onclick="btnFirstQuestion(event)">1 Kilometer</button>
+                <button onclick="btnFirstQuestion(event)">5 Kilometers</button>
             </div>
 
             <div class="section">
