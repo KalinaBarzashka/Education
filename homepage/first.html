@@ -18,7 +18,10 @@
             let form = e.currentTarget.parentNode;
             let pet_name = form.querySelector("#pet_name");
             let pet_age = form.querySelector("#pet_age");
-            console.log();
+            let radio_btns = form.querySelectorAll('input[name="breed"]');
+            console.log(pet_name.innerText);
+            console.log(pet_age);
+            console.log(radio_btns);
 
             let tr = document.createElement("tr");
             tr.innerHTML = `
