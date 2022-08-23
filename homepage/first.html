@@ -8,7 +8,6 @@
         <title>My Webpage</title>
         <script>
           let pet_counter = 0;
-          console.log(pet_counter);
 
           function add_pet(e)
           {
@@ -16,8 +15,8 @@
             pet_counter++;
 
             let form = e.currentTarget.parentNode;
-            let pet_name = form.querySelector("#pet_name").value;
-            let pet_age = form.querySelector("#pet_age").value;
+            let pet_name = form.querySelector("#pet_name");
+            let pet_age = form.querySelector("#pet_age");
             let radio_btns = form.querySelectorAll('input[name="breed"]');
             let breed = "";
             for (let i = 0, n = radio_btns.length; i < n; i++)
@@ -25,18 +24,21 @@
               if (radio_btns[i].checked)
               {
                 breed = radio_btns[i].defaultValue;
+                radio_btns[i].checked = false;
               }
             }
 
             let tr = document.createElement("tr");
             tr.innerHTML = `
                   <th scope="row">${pet_counter}</th>
-                  <td>${pet_name}</td>
-                  <td>${pet_age}</td>
+                  <td>${pet_name.value}</td>
+                  <td>${pet_age.value}</td>
                   <td>${breed}</td>
             `;
 
             tbody.appendChild(tr);
+            pet_name.value = "";
+            pet_age.value = "";
 
             // prevet sending the form to server
             e.preventDefault();
