@@ -38,6 +38,18 @@
                 // prevet sending the form to server
                 e.preventDefault();
             }
+
+            function btnSecondQuestion()
+            {
+                // select correct and incorrect msgs
+                correctMsg = document.querySelector("#correct");
+                incorrectMsg = document.querySelector("#incorrect");
+                correctMsg.style.display = "none";
+                incorrectMsg.style.display = "none";
+
+                // prevet sending the form to server
+                e.preventDefault();
+            }
         </script>
     </head>
     <body>
@@ -63,6 +75,11 @@
                 <h2>Part 2: Free Response</h2>
                 <hr>
                 <!-- TODO: Add free response question here -->
+                <h3>With which sport would you have associated Jocky Wilson?</h3>
+                <p hidden id="correct">Correct!</p>
+                <p hidden id="incorrect">Incorrect!</p>
+                <input type="text" />
+                <button onclick="btnSecondQuestion(event)" type="submit">Check Answer</button>
             </div>
         </div>
     </body>
