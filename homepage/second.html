@@ -7,7 +7,15 @@
         <link href="styles.css" rel="stylesheet">
         <title>My Webpage</title>
         <script>
-          
+          document.addEventListener('DOMContentLoaded', function(){
+            let list_items = document.querySelectorAll("li");
+            for (let i = 0, n = list_items.length; i < n; i++)
+            {
+              list_items[i].addEventListener('click', function(){
+                
+              });
+            }
+          });
         </script>
     </head>
     <body>
