@@ -13,11 +13,21 @@
           function add_pet(e)
           {
             tbody = document.querySelector("#tbody");
-            counter++;
-            console.log(counter);
+            console.log(tbody);
+            pet_counter++;
 
+            let html = `
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+                </tr>
+            `;
+
+
+            // prevet sending the form to server
             e.preventDefault();
-
           }
         </script>
     </head>
@@ -102,12 +112,7 @@
                 </tr>
               </thead>
               <tbody id="tbody">
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
+
               </tbody>
             </table>
         </main>
