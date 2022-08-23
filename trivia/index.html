@@ -42,8 +42,9 @@
             function btnSecondQuestion()
             {
                 // select correct and incorrect msgs
-                correctMsg = document.querySelector("container:section#correct");
-                incorrectMsg = document.querySelector("container:section#incorrect");
+                correctMsg = document.querySelector("container:section:first-child#correct");
+                incorrectMsg = document.querySelector("container:section:first-child#incorrect");
+                console.log(correctMsg);
                 correctMsg.style.display = "none";
                 incorrectMsg.style.display = "none";
 
@@ -76,8 +77,8 @@
                 <hr>
                 <!-- TODO: Add free response question here -->
                 <h3>With which sport would you have associated Jocky Wilson?</h3>
-                <p hidden id="correct">Correct!</p>
-                <p hidden id="incorrect">Incorrect!</p>
+                <p hidden id="correct">CCorrect!</p>
+                <p hidden id="incorrect">IIncorrect!</p>
                 <input type="text" />
                 <button onclick="btnSecondQuestion(event)" type="submit">Check Answer</button>
             </div>
