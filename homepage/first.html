@@ -41,18 +41,64 @@
                     <label>Name: </label>
                     <input type="text" />
                 </div>
-                <div class="mb-3">
-                    <label>Breed: </label>
-                    <input id="cat" type="radio" value="cat" />
-                    <label for="cat">Cat</label>
-                    <input id="dog" type="radio" value="dog" />
-                    <label for="dog">Dog</label>
-                    <input id="bird" type="radio" value="bird" />
-                    <label for="bird">Bird</label>
-                    <input id="bird" type="radio" value="bird" />
-                    <label for="bird">Bird</label>
+                <div class="mb-3 container">
+                  <div class="row">
+                    <div class="col">
+                      <label>Breed: </label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <input id="cat" type="radio" value="cat" />
+                      <label for="cat">Cat</label>
+                    </div>
+                    <div class="col">
+                      <input id="dog" type="radio" value="dog" />
+                      <label for="dog">Dog</label>
+                    </div>
+                    <div class="col">
+                      <input id="bird" type="radio" value="bird" />
+                      <label for="bird">Bird</label>
+                    </div>
+                    <div class="col">
+                      <input id="bird" type="radio" value="bird" />
+                      <label for="bird">Bird</label>
+                    </div>
+                  </div>
                 </div>
+                <button class="btn btn-primary">Add Pet</button>
             </form>
+
+            <hr>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">First</th>
+                  <th scope="col">Last</th>
+                  <th scope="col">Handle</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>@fat</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td colspan="2">Larry the Bird</td>
+                  <td>@twitter</td>
+                </tr>
+              </tbody>
+            </table>
         </main>
         <footer></footer>
     </body>
