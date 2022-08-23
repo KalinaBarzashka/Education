@@ -10,8 +10,8 @@
             function btnFirstQuestion(e)
             {
                 // select correct and incorrect msgs
-                correctMsg = document.querySelector("#correct");
-                incorrectMsg = document.querySelector("#incorrect");
+                correctMsg = document.querySelectorAll(".container .section")[0].querySelector("#correct");
+                incorrectMsg = document.querySelectorAll(".container .section")[0].querySelector("#incorrect");
                 correctMsg.style.display = "none";
                 incorrectMsg.style.display = "none";
 
@@ -39,14 +39,28 @@
                 e.preventDefault();
             }
 
-            function btnSecondQuestion()
+            function btnSecondQuestion(e)
             {
                 // select correct and incorrect msgs
-                correctMsg = document.querySelectorAll(".container .section")[1].child('');
-                incorrectMsg = document.querySelector(".container :nth-child(2)");
-                console.log(correctMsg);
+                correctMsg = document.querySelectorAll(".container .section")[1].querySelector("#correct");
+                incorrectMsg = document.querySelectorAll(".container .section")[1].querySelector("#incorrect");
                 correctMsg.style.display = "none";
                 incorrectMsg.style.display = "none";
+
+                // correct answer - Darts
+                let element = e.currentTarget;
+                let input = document.querySelector("input");
+
+                if (input.value.toLowerCase() == "darts")
+                {
+                    input.style.backgroundColor = "green";
+                    correctMsg.style.display = "block";
+                }
+                else
+                {
+                    input.style.backgroundColor = "red";
+                    incorrectMsg.style.display = "block";
+                }
 
                 // prevet sending the form to server
                 e.preventDefault();
@@ -77,8 +91,8 @@
                 <hr>
                 <!-- TODO: Add free response question here -->
                 <h3>With which sport would you have associated Jocky Wilson?</h3>
-                <p hidden id="correct">CCorrect!</p>
-                <p hidden id="incorrect">IIncorrect!</p>
+                <p hidden id="correct">Correct!</p>
+                <p hidden id="incorrect">Incorrect!</p>
                 <input type="text" />
                 <button onclick="btnSecondQuestion(event)" type="submit">Check Answer</button>
             </div>
