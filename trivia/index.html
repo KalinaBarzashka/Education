@@ -42,8 +42,8 @@
             function btnSecondQuestion()
             {
                 // select correct and incorrect msgs
-                correctMsg = document.querySelector("container:section:first-child#correct");
-                incorrectMsg = document.querySelector("container:section:first-child#incorrect");
+                correctMsg = document.querySelector(".container.section:nth-child(2)#correct");
+                incorrectMsg = document.querySelector(".container :nth-child(2)");
                 console.log(correctMsg);
                 correctMsg.style.display = "none";
                 incorrectMsg.style.display = "none";
