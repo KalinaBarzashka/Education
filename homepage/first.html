@@ -8,12 +8,15 @@
         <title>My Webpage</title>
         <script>
           let pet_counter = 0;
+          console.log(pet_counter);
 
           function add_pet(e)
           {
             tbody = document.querySelector("#tbody");
             counter++;
             console.log(counter);
+
+            e.preventDefault();
 
           }
         </script>
