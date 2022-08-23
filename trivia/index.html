@@ -9,8 +9,14 @@
             // TODO: Add code to check answers to questions
             function btnFirstQuestion(e)
             {
-                let element = e.target;
-                console.log(element);
+                let element = e.currentTarget;
+                if (element.innerHtml == '100 Metres')
+                {
+                    element.style.backgroundColor = 'green';
+                }
+
+
+
             }
         </script>
     </head>
@@ -25,6 +31,8 @@
                 <hr>
                 <!-- TODO: Add multiple choice question here -->
                 <h3>In A Decathlon What Is The First Event?</h3>
+                <p hidden>Correct!</p>
+                <p hidden>Incorrect!</p>
                 <button onclick="btnFirstQuestion(event)">500 Metres</button>
                 <button onclick="btnFirstQuestion(event)">100 Metres</button>
                 <button onclick="btnFirstQuestion(event)">1 Kilometer</button>
