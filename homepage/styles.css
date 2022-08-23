@@ -1,8 +1,13 @@
-body
+main
 {
-
+    margin: 20px;
 }
 
 .breed{
     margin: 0;
+}
+
+.pet-name{
+    padding-left: 12px;
+    padding-right: 12px;
 }
