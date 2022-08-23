@@ -32,6 +32,8 @@
                     incorrectMsg.style.display = "block";
                     element.style.backgroundColor = 'red';
                 }
+
+                e.preventDefault();
             }
         </script>
     </head>
@@ -48,10 +50,10 @@
                 <h3>In A Decathlon What Is The First Event?</h3>
                 <p hidden id="correct">Correct!</p>
                 <p hidden id="incorrect">Incorrect!</p>
-                <button onclick="btnFirstQuestion(event)" type="submit" >500 Metres</button>
-                <button onclick="btnFirstQuestion(event)">100 Metres</button>
-                <button onclick="btnFirstQuestion(event)">1 Kilometer</button>
-                <button onclick="btnFirstQuestion(event)">5 Kilometers</button>
+                <button onclick="btnFirstQuestion(event)" type="submit">500 Metres</button>
+                <button onclick="btnFirstQuestion(event)" type="submit">100 Metres</button>
+                <button onclick="btnFirstQuestion(event)" type="submit">1 Kilometer</button>
+                <button onclick="btnFirstQuestion(event)" type="submit">5 Kilometers</button>
             </div>
 
             <div class="section">
