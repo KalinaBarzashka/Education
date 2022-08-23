@@ -42,7 +42,7 @@
             function btnSecondQuestion()
             {
                 // select correct and incorrect msgs
-                correctMsg = document.querySelector(".container.section:nth-child(2)#correct");
+                correctMsg = document.querySelectorAll(".container .section")[1].child('');
                 incorrectMsg = document.querySelector(".container :nth-child(2)");
                 console.log(correctMsg);
                 correctMsg.style.display = "none";
