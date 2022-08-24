@@ -8,7 +8,7 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/greet", method=["POST"])
+@app.route("/greet", methods=["POST"])
 def greet():
     name = request.args.get("name", "default value") #default value will show only if not provided in url after ?
     return render_template("greet.html", name=name)
