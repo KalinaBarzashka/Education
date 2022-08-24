@@ -10,5 +10,5 @@ def index():
 
 @app.route("/greet", methods=["POST"])
 def greet():
-    name = request.args.get("name", "default value") #default value will show only if not provided in url after ?
+    name = request.form.get("name", "default value") #default value will show only if not provided in url after ? - request.args
     return render_template("greet.html", name=name)
