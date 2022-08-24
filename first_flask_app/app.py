@@ -4,4 +4,5 @@ app = Flask(__name__)
 
 @app.route("/") # when to call this index function - decorator
 def index():
-    return render_template("index.html")
+    name = request.args.get("name")
+    return render_template("index.html", name=name) # name=name; first name is the name of the variable we want to give to the template and the second is the value
