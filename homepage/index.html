@@ -14,13 +14,18 @@
           {
             try
             {
-              champions = await fetch(url);
+              debugger;
+              let response = await fetch(url);
+              debugger;
+              champions = await response.json();
             }
             catch
             {
 
             }
           }
+
+          get_champions();
         </script>
     </head>
     <body>
