@@ -35,7 +35,7 @@
               </nav>
         </header>
         <main>
-          <div id="champions">
+          <div class="champions_container">
 
           </div>
         </main>
@@ -45,7 +45,7 @@
           var champions = [];
           var championsUrl = "https://ddragon.leagueoflegends.com/cdn/9.18.1/data/en_US/champion.json";
           var imagesUrl = "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/?_0.jpg";
-          var championsEl = document.getElementById("champions");
+          var championsEl = document.getElementsByClassName("champions_container")[0];
           var champions_loading = 10;
 
           async function get_champions()
@@ -67,6 +67,7 @@
                 let champUrl = imagesUrl.replace('?', champion.name);
 
                 var el = document.createElement('div');
+                el.classList.add("champions_item");
                 el.innerHTML = `
                   <img id="championImage" src="${champUrl}" >
                   <p id="championName">${champion.name}</p>
