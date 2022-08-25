@@ -6,6 +6,22 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         <link href="styles.css" rel="stylesheet">
         <title>My Personal Site</title>
+        <script>
+          var champions = [];
+          var url = "http://ddragon.leagueoflegends.com/cdn/9.18.1/data/en_US/champion.json";
+
+          async function get_champions()
+          {
+            try
+            {
+              champions = await fetch(url);
+            }
+            catch
+            {
+
+            }
+          }
+        </script>
     </head>
     <body>
         <header>
@@ -35,7 +51,9 @@
               </nav>
         </header>
         <main>
+          <div id="champions">
 
+          </div>
         </main>
         <footer></footer>
     </body>
