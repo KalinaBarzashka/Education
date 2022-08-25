@@ -43,8 +43,10 @@
 
         <script>
           var champions = [];
-          var url = "https://ddragon.leagueoflegends.com/cdn/9.18.1/data/en_US/champion.json";
+          var championsUrl = "https://ddragon.leagueoflegends.com/cdn/9.18.1/data/en_US/champion.json";
+          var imagesUrl = "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/?_0.jpg";
           var championsEl = document.getElementById("champions");
+          var champions_loading = 10;
 
           async function get_champions()
           {
@@ -62,6 +64,7 @@
               for (key in champions)
               {
                 let champion = champions[key];
+
                 var el = document.createElement('div');
                 el.innerHTML = `
                   <p>${champion.name}</p>
@@ -69,6 +72,12 @@
                 `;
 
                 championsEl.append(el);
+                champions_loading--;
+
+                if (champions_loading === 0)
+                {
+                  break;
+                }
               }
             }
             catch(err)
