@@ -23,5 +23,18 @@ main
 
 .champions_item
 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 320px;
+    border-radius: 5px;
+    background-color: #343a40;
+    position: relative;
+    box-shadow: 5px 5px 10px rgb(0 0 0 / 50%);
+    margin: 8px;
+}
+
+#championImage
+{
 
 }
