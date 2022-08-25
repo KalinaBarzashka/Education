@@ -8,16 +8,20 @@
         <title>My Personal Site</title>
         <script>
           var champions = [];
-          var url = "http://ddragon.leagueoflegends.com/cdn/9.18.1/data/en_US/champion.json";
+          var url = "https://ddragon.leagueoflegends.com/cdn/9.18.1/data/en_US/champion.json";
 
           async function get_champions()
           {
             try
             {
-              debugger;
               let response = await fetch(url);
+              if (response.status !== 200)
+              {
+                throw new Error("Champions not loaded!");
+              }
+
+              champions = await response.json().data;
               debugger;
-              champions = await response.json();
             }
             catch
             {
