@@ -35,13 +35,39 @@
               </nav>
         </header>
         <main>
+          <h3>League of Legends champion details</h3>
+          <div class="champion_container">
 
+          </div>
         </main>
         <footer></footer>
         <script>
-          const url = new URL(window.location.href);
-          const params = new URLSearchParams(url.search);
-          console.log(params.id);
+          const urlSearchParams = new URLSearchParams(window.location.search);
+          const params = Object.fromEntries(urlSearchParams.entries());
+          const {id} = params;
+
+          async function get_details()
+          {
+            try
+            {
+              var detialsUrl = 'http://ddragon.leagueoflegends.com/cdn/12.16.1/data/en_US/champion/' + id + '.json';
+              var championEl = document.getElementsByClassName("champion_container")[0];
+              let response = await fetch(detailsUrl);
+              if (response.status !== 200)
+              {
+                throw new Error("Champions not loaded!");
+              }
+
+              let details = await response.json();
+              debugger;
+            }
+            catch(err)
+            {
+              championEl.innerHtml = err.message;
+            }
+          }
+
+          get_details();
         </script>
     </body>
 </html>
