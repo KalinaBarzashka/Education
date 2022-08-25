@@ -45,3 +45,8 @@ main
 {
     color: white;
 }
+
+#champion_text
+{
+    padding: 20px;
+}
