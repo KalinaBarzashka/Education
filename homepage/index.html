@@ -46,6 +46,7 @@
           var championsUrl = "https://ddragon.leagueoflegends.com/cdn/9.18.1/data/en_US/champion.json";
           var imagesUrl = "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/?_0.jpg";
           var championsEl = document.getElementsByClassName("champions_container")[0];
+          // champions to be loaded
           var champions_loading = 10;
 
           async function get_champions()
@@ -64,8 +65,10 @@
               for (key in champions)
               {
                 let champion = champions[key];
-                let champUrl = imagesUrl.replace('?', champion.name.replace(' ', '_'));
+                // replace initial url with champion name and remove spaces in champion name to retrive image
+                let champUrl = imagesUrl.replace('?', champion.name.replace(' ', ''));
 
+                // create div element for champion card
                 var el = document.createElement('div');
                 el.classList.add("champions_item");
                 el.innerHTML = `
@@ -74,6 +77,7 @@
                   <p id="championBlurb">${champion.blurb}</p>
                 `;
 
+                // append created element
                 championsEl.append(el);
                 champions_loading--;
 
