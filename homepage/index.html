@@ -65,11 +65,13 @@
               {
                 let champion = champions[key];
                 let champUrl = imagesUrl.replace('?', champion.name);
+                debugger;
 
                 let image = await fetch(champUrl);
 
                 var el = document.createElement('div');
                 el.innerHTML = `
+                  <img src="{image}" >
                   <p>${champion.name}</p>
                   <p>${champion.blurb}</p>
                 `;
