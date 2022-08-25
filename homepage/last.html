@@ -52,6 +52,8 @@
             {
               var detailsUrl = 'https://ddragon.leagueoflegends.com/cdn/12.16.1/data/en_US/champion/' + id + '.json';
               var championEl = document.getElementsByClassName("champion_container")[0];
+              let imagesUrl = "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/?_0.jpg";
+              let champUrl = imagesUrl.replace('?', id);
               let response = await fetch(detailsUrl);
               if (response.status !== 200)
               {
@@ -59,6 +61,20 @@
               }
 
               let details = (await response.json()).data[id];
+
+              // create div element for champion details
+              var el = document.createElement('div');
+              el.classList.add("champion_item");
+              el.innerHTML = `
+                  <img id="championImage" src="${champUrl}">
+                  <div id="champion_text">
+                    <a href="/last.html?id=${champion.id}"><p id="championName">${champion.name}</p></a>
+                    <p id="championBlurb">${champion.blurb}</p>
+                  </div>
+              `;
+
+              // append created element
+              championEl.append(el);
             }
             catch(err)
             {
