@@ -11,6 +11,9 @@
 
           function add_pet(e)
           {
+            // prevet sending the form to server
+            e.preventDefault();
+
             tbody = document.querySelector("#tbody");
             pet_counter++;
 
@@ -39,9 +42,6 @@
             tbody.appendChild(tr);
             pet_name.value = "";
             pet_age.value = "";
-
-            // prevet sending the form to server
-            e.preventDefault();
           }
         </script>
     </head>
