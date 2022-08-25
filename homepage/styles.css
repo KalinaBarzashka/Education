@@ -60,7 +60,7 @@ main
 
 #detailsChampionImage
 {
-    width: 80%;
+    width: 60%;
     object-fit: cover;
     object-position: center;
 }

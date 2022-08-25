@@ -36,8 +36,6 @@
         </header>
         <main>
           <h3>League of Legends champion details</h3>
-          <div class="champion_container">
-          </div>
         </main>
         <footer></footer>
         <script>
@@ -50,7 +48,8 @@
             try
             {
               var detailsUrl = 'https://ddragon.leagueoflegends.com/cdn/12.16.1/data/en_US/champion/' + id + '.json';
-              var championEl = document.getElementsByClassName("champion_container")[0];
+              var championEl = document.getElementsByTagName("main")[0];
+              //var championEl = document.getElementsByClassName("champion_container")[0];
               let imagesUrl = "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/?_0.jpg";
               let champUrl = imagesUrl.replace('?', id);
 
@@ -64,6 +63,7 @@
 
               // create div element for champion details
               var el = document.createElement('div');
+              el.classList.add("champion_container");
               el.innerHTML = `
                   <img id="detailsChampionImage" src="${champUrl}">
                   <div id="champion_text">
