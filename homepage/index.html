@@ -64,14 +64,12 @@
               for (key in champions)
               {
                 let champion = champions[key];
-                let champUrl = imagesUrl.replace('?', champion.name);
+                let champUrl = imagesUrl.replace('?', champion.name.replace(' ', '_'));
 
                 var el = document.createElement('div');
                 el.classList.add("champions_item");
                 el.innerHTML = `
-                  <div id="champion_img_container">
-                    <img id="championImage" src="${champUrl}">
-                  </div>
+                  <img id="championImage" src="${champUrl}">
                   <p id="championName">${champion.name}</p>
                   <p id="championBlurb">${champion.blurb}</p>
                 `;
