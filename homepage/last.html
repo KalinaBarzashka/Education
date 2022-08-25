@@ -54,6 +54,7 @@
               var championEl = document.getElementsByClassName("champion_container")[0];
               let imagesUrl = "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/?_0.jpg";
               let champUrl = imagesUrl.replace('?', id);
+
               let response = await fetch(detailsUrl);
               if (response.status !== 200)
               {
