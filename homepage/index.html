@@ -64,7 +64,9 @@
               for (key in champions)
               {
                 let champion = champions[key];
-                let 
+                let champUrl = imagesUrl.replace('?', champion.name);
+
+                let image = await fetch(champUrl);
 
                 var el = document.createElement('div');
                 el.innerHTML = `
