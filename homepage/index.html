@@ -9,6 +9,7 @@
         <script>
           var champions = [];
           var url = "https://ddragon.leagueoflegends.com/cdn/9.18.1/data/en_US/champion.json";
+          var championsEl = document.getElementById("champions");
 
           async function get_champions()
           {
@@ -20,7 +21,18 @@
                 throw new Error("Champions not loaded!");
               }
 
-              champions = await response.json().data;
+              champions = (await response.json()).data;
+
+              for (key in champions)
+              {
+                let champion = champions[key];
+                var el = document.createElement('div');
+                el.innerHtml = `
+                  
+                `;
+
+                championsEl.append(el);
+              }
               debugger;
             }
             catch
