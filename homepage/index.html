@@ -68,9 +68,9 @@
 
                 var el = document.createElement('div');
                 el.innerHTML = `
-                  <img src="${champUrl}" >
-                  <p>${champion.name}</p>
-                  <p>${champion.blurb}</p>
+                  <img id="championImage" src="${champUrl}" >
+                  <p id="championName">${champion.name}</p>
+                  <p id="championBlurb">${champion.blurb}</p>
                 `;
 
                 championsEl.append(el);

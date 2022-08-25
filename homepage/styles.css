@@ -12,3 +12,8 @@ main
     padding-right: 12px;
 }
 
+#champions
+{
+    display: flex;
+    flex-wrap: wrap;
+}
