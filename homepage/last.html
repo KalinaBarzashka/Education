@@ -58,8 +58,7 @@
                 throw new Error("Champions not loaded!");
               }
 
-              let details = await response.json();
-              debugger;
+              let details = (await response.json()).data[id];
             }
             catch(err)
             {
