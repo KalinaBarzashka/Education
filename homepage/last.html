@@ -50,7 +50,7 @@
           {
             try
             {
-              var detialsUrl = 'http://ddragon.leagueoflegends.com/cdn/12.16.1/data/en_US/champion/' + id + '.json';
+              var detailsUrl = 'https://ddragon.leagueoflegends.com/cdn/12.16.1/data/en_US/champion/' + id + '.json';
               var championEl = document.getElementsByClassName("champion_container")[0];
               let response = await fetch(detailsUrl);
               if (response.status !== 200)
