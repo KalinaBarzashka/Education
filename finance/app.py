@@ -55,20 +55,22 @@ def buy():
     if request.method == "POST":
         symbol = request.form.get("symbol")
         if not symbol:
-            return apology("nust provide symbol", 403)
+            return apology("must provide symbol", 403)
 
-        shares = request.form.get("shares")
+        shares = int(request.form.get("shares"))
         if shares <= 0:
             return apology("shares must be positive number", 403)
 
-        current_price = lookup(symbol)
-        if not symbol:
+        stock_data= lookup(symbol)
+        if not stock_data:
             return apology("not valid symbol", 403)
 
         users_price = db.execute("SELECT cash FROM users WHERE id = ?", session["user_id"])
+        total_price = stock_data["price"]*shares
 
-        if current_price > users_price:
+        if total_price > users_price[0]["cash"]:
             return apology("not enoght money", 403)
+        return render_template("test.html", total_price=total_price, users_price=users_price)
     # User reached route via GET (as by clicking a link or via redirect)
     else:
         return render_template("buy.html")
