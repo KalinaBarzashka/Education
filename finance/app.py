@@ -131,8 +131,8 @@ def register():
         if not password or not confirmation:
             return apology("must provide password", 403)
 
-        if password or not confirmation:
-            return apology("must provide password", 403)
+        if password != confirmation:
+            return apology("passwords does not match", 403)
 
         # Query to see if username is taken
         rows = db.execute("SELECT * FROM users WHERE username = ?", username)
