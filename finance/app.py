@@ -117,7 +117,28 @@ def quote():
 @app.route("/register", methods=["GET", "POST"])
 def register():
     """Register user"""
-    return apology("TODO")
+
+    if request.method == "POST":
+
+        # Return apology if username is blank
+        username = reguest.form.get("username")
+        if not username:
+            return apology("must provide username", 403)
+
+        # Return apology if password is blank
+        password = reguest.form.get("password")
+        confirmation = reguest.form.get("confirmation")
+        if not password or not confirmation:
+            return apology("must provide password", 403)
+
+        if password or not confirmation:
+            return apology("must provide password", 403)
+
+        # Query to see if username is taken
+        rows = db.execute("SELECT * FROM users WHERE username = ?", username)
+
+        if len(rows) != 0:
+            return apology("username already taken", 403)
 
 
 @app.route("/sell", methods=["GET", "POST"])
