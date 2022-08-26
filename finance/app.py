@@ -140,6 +140,15 @@ def register():
         if len(rows) != 0:
             return apology("username already taken", 403)
 
+        db.execute("INSERT INTO users (username, hash) VALUES (?, ?)", username, generate_password_hash(password))
+
+        # Redirect user to login page
+        return redirect("/login")
+
+    # User reached route via GET (as by clicking a link or via redirect)
+    else:
+        return render_template("register.html")
+
 
 @app.route("/sell", methods=["GET", "POST"])
 @login_required
