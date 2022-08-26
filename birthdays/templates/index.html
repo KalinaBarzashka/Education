@@ -16,8 +16,8 @@
                 <h2>Add a Birthday</h2>
                 <form action="/" method="post">
                     <input autocomplete="off" autofocus name="name" placeholder="Name" required type="text" />
-                    <input autocomplete="off" autofocus name="month" placeholder="Month" required type="text" />
-                    <input autocomplete="off" autofocus name="day" placeholder="Day" required type="text" />
+                    <input autocomplete="off" autofocus min="1" max="12" name="month" placeholder="Month" required type="number"  />
+                    <input autocomplete="off" autofocus min="1" max="31" name="day" placeholder="Day" required type="number" />
                     <button>Add Birthday</button>
                 </form>
             </div>
