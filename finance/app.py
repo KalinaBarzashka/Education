@@ -140,7 +140,7 @@ def register():
         if len(rows) != 0:
             return apology("username already taken", 403)
 
-        db.execute("INSERT INTO users (username, hash) VALUES (?, ?)", username, generate_password_hash(password))
+        db.execute("INSERT INTO users (username, hash) VALUES (?, ?)", username, generate_password_hash(password, sha256, "MAGIC UN"))
 
         # Redirect user to login page
         return redirect("/login")
