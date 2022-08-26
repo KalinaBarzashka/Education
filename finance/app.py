@@ -121,13 +121,13 @@ def register():
     if request.method == "POST":
 
         # Return apology if username is blank
-        username = reguest.form.get("username")
+        username = request.form.get("username")
         if not username:
             return apology("must provide username", 403)
 
         # Return apology if password is blank
-        password = reguest.form.get("password")
-        confirmation = reguest.form.get("confirmation")
+        password = request.form.get("password")
+        confirmation = request.form.get("confirmation")
         if not password or not confirmation:
             return apology("must provide password", 403)
 
