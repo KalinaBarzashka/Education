@@ -70,6 +70,8 @@ def buy():
 
         if total_price > users_price[0]["cash"]:
             return apology("not enoght money", 403)
+
+        db.execute("INSERT INTO transactions (user_id, symbol, shares, share_price, event_date) VALUES (?, ?, ?, ?, ?)", session["user_id"], symbol, shares, stock_data["price"], )
         return render_template("test.html", total_price=total_price, users_price=users_price)
     # User reached route via GET (as by clicking a link or via redirect)
     else:
