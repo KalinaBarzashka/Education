@@ -122,7 +122,7 @@ def quote():
         if data == None:
             return apology("no data found for provided symbol", 403)
 
-        return render_template("quoted", data)
+        return render_template("quoted.html", data=data)
 
     # User reached route via GET (as by clicking a link or via redirect)
     else:
