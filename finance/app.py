@@ -115,10 +115,14 @@ def quote():
     if request.method == "POST":
         symbol = request.form.get("symbol")
         if not symbol:
-            render apology("must provide symbol", 403)
-            data = lookup(symbol)
+            return apology("must provide symbol", 403)
 
-            return render_template("quoted", data)
+        data = lookup(symbol)
+
+        if data == None:
+            return apology("no data found for provided symbol", 403)
+
+        return render_template("quoted", data)
 
     # User reached route via GET (as by clicking a link or via redirect)
     else:
