@@ -50,7 +50,28 @@ def index():
 @login_required
 def buy():
     """Buy shares of stock"""
-    return apology("TODO")
+
+    # User reached route via POST (as by submitting a form via POST)
+    if request.method == "POST":
+        symbol = request.form.get("symbol")
+        if not symbol:
+            return apology("nust provide symbol", 403)
+
+        shares = request.form.get("shares")
+        if shares <= 0:
+            return apology("shares must be positive number", 403)
+
+        current_price = lookup(symbol)
+        if not symbol:
+            return apology("not valid symbol", 403)
+
+        users_price = db.execute("SELECT cash FROM users WHERE id = ?", session["user_id"])
+
+        if current_price > users_price:
+            return apology("not enoght money", 403)
+    # User reached route via GET (as by clicking a link or via redirect)
+    else:
+        return render_template("buy.html")
 
 
 @app.route("/history")
