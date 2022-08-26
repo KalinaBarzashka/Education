@@ -5,6 +5,7 @@ from flask import Flask, flash, redirect, render_template, request, session
 from flask_session import Session
 from tempfile import mkdtemp
 from werkzeug.security import check_password_hash, generate_password_hash
+from datetime import datetime
 
 from helpers import apology, login_required, lookup, usd
 
@@ -71,8 +72,9 @@ def buy():
         if total_price > users_price[0]["cash"]:
             return apology("not enoght money", 403)
 
-        db.execute("INSERT INTO transactions (user_id, symbol, shares, share_price, event_date) VALUES (?, ?, ?, ?, ?)", session["user_id"], symbol, shares, stock_data["price"], )
-        return render_template("test.html", total_price=total_price, users_price=users_price)
+        db.execute("INSERT INTO transactions (user_id, symbol, shares, share_price, event_date) VALUES (?, ?, ?, ?, ?)", session["user_id"], symbol, shares, stock_data["price"], datetime.now())
+        return redirect("/")
+
     # User reached route via GET (as by clicking a link or via redirect)
     else:
         return render_template("buy.html")
