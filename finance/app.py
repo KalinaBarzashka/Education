@@ -46,7 +46,7 @@ def index():
     """Show portfolio of stocks"""
 
     data = db.execute("SELECT symbol, COUNT(shares) as shares, AVG(share_price) as share_price FROM transactions WHERE user_id = ? GROUP BY user_id, symbol", session["user_id"])
-    count = data.count
+    count = data.count()
     return render_template("test.html", data=data, count=count)
 
 
