@@ -5,6 +5,8 @@
 {% endblock %}
 
 {% block main %}
-    {{ data[0] }}
-    {{ count }}
+    {% for info in data %}
+        <div>{{info}}</div>
+    {% endfor %}
+    <div>{{current_user_price}}</div>
 {% endblock %}
