@@ -15,7 +15,15 @@
                 <th>TOTAL</th>
             </tr>
         </thead>
-        <tbody></tbody>
+        <tbody>
+        {% for info in data %}
+            <div>{{info.symbol}}</div>
+            <div>{{info.name}}</div>
+            <div>{{info.shares}}</div>
+            <div>{{info.share_price}}</div>
+            <div>{{info.total_price}}</div>
+        {% endfor %}
+        </tbody>
         <tfoot>
             <tr>
                 <td>Cash</td>

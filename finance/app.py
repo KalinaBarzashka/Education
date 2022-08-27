@@ -47,20 +47,21 @@ def index():
 
     # query db for users shares, group by user id and symbol
     data = db.execute("SELECT symbol, COUNT(shares) as shares, AVG(share_price) as share_price FROM transactions WHERE user_id = ? GROUP BY user_id, symbol", session["user_id"])
+    # init total variable to get total sum of users money (in cash and in stock)
+    total_sum = 0
     # add data about symbol full name and total price of the shares that user bought
-    total = 0
     for d in data:
         d["name"] = lookup(d["symbol"])["name"]
         d["total_price"] = d["shares"] * d["share_price"]
-        total = total + d["total_price"]
+        total_sum = total_sum + d["total_price"]
 
     # get current user cash
     current_user_price = db.execute("SELECT cash FROM users WHERE id = ?", session["user_id"])
 
-    total = total + current_user_price[0]["cash"]
 
+    total_sum = total_sum + current_user_price[0]["cash"]
 
-    return render_template("test.html", data=data, current_user_price=current_user_price, total=total)
+    return render_template("test.html", data=data, current_user_price=current_user_price, total_sum=total_sum)
 
 
 @app.route("/buy", methods=["GET", "POST"])
