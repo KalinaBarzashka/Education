@@ -56,10 +56,10 @@ def index():
         total_sum = total_sum + d["total_price"]
 
     # get current user cash
-    current_user_price = db.execute("SELECT cash FROM users WHERE id = ?", session["user_id"])
+    current_user_price = db.execute("SELECT cash FROM users WHERE id = ?", session["user_id"])[0]["cash"]
 
 
-    total_sum = total_sum + current_user_price[0]["cash"]
+    total_sum = total_sum + current_user_price
 
     return render_template("index.html", data=data, current_user_price=current_user_price, total_sum=total_sum)
 

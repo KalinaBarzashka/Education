@@ -17,11 +17,13 @@
         </thead>
         <tbody>
         {% for info in data %}
-            <div>{{info.symbol}}</div>
-            <div>{{info.name}}</div>
-            <div>{{info.shares}}</div>
-            <div>{{info.share_price}}</div>
-            <div>{{info.total_price}}</div>
+            <tr>
+                <td>{{info.symbol}}</td>
+                <td>{{info.name}}</td>
+                <td>{{info.shares}}</td>
+                <td>{{info.share_price}}</td>
+                <td>{{info.total_price}}</td>
+            </tr>
         {% endfor %}
         </tbody>
         <tfoot>
