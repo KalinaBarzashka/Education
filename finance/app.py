@@ -61,7 +61,7 @@ def index():
 
     total_sum = total_sum + current_user_price[0]["cash"]
 
-    return render_template("test.html", data=data, current_user_price=current_user_price, total_sum=total_sum)
+    return render_template("index.html", data=data, current_user_price=current_user_price, total_sum=total_sum)
 
 
 @app.route("/buy", methods=["GET", "POST"])
