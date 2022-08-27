@@ -44,6 +44,8 @@ def after_request(response):
 @login_required
 def index():
     """Show portfolio of stocks"""
+
+    data = db.execute("")
     return apology("TODO")
 
 
