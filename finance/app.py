@@ -73,6 +73,7 @@ def buy():
             return apology("not enoght money", 403)
 
         db.execute("INSERT INTO transactions (user_id, symbol, shares, share_price, event_date) VALUES (?, ?, ?, ?, ?)", session["user_id"], symbol, shares, stock_data["price"], datetime.now())
+        db.execute("UPDATE users SET cash = ? WHERE id = ?", users_price[0]["cash"] - total_price, session["user_id"])
         return redirect("/")
 
     # User reached route via GET (as by clicking a link or via redirect)
