@@ -221,7 +221,11 @@ def sell():
 
     # User reached route via POST (as by submitting a form via POST)
     if request.method == "POST":
-        return render_template("/")
+        symbol = request.form.get("symbol")
+        shares = request.form.get("shares")
+
+        current_user_shares
+        return render_template("test.html", symbol=symbol, shares=shares)
 
     # User reached route via GET (as by clicking a link or via redirect)
     else:
