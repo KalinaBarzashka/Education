@@ -246,6 +246,10 @@ def sell():
         # Add money to users account
         db.execute("UPDATE users SET cash = cash + ? WHERE user_id = ?", current_price, user_id)
 
+        # remove stocks from transactions
+        db.execute("UPDATE transactions set ")
+
+        flash("Sold!")
         return redirect("/")
         return render_template("test.html", symbol=symbol, shares=shares)
 
