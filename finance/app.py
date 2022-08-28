@@ -221,12 +221,10 @@ def sell():
 
     # User reached route via POST (as by submitting a form via POST)
     if request.method == "POST":
-
+        return render_template("/")
 
     # User reached route via GET (as by clicking a link or via redirect)
     else:
         stocks = db.execute("SELECT symbol, SUM(shares) as shares FROM transactions WHERE user_id = ? GROUP BY user_id, symbol", session["user_id"])
 
-        render_template("sell.html", stocks=stocks)
-
-
+        return render_template("sell.html", stocks=stocks)
