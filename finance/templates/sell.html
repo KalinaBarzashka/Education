@@ -7,7 +7,7 @@
 {% block main %}
     <form action="/sell" method="post">
         <div class="mb-3">
-            <select autocomplete="off" autofocus class="form-control mx-auto w-auto" id="symbol" name="symbol" placeholder="Symbol">
+            <select autocomplete="off" autofocus class="form-select mx-auto w-auto" id="symbol" name="symbol" placeholder="Symbol">
                 <option disabled selected>Symbol</option>
             {% for stock in stocks %}
                 <option value="{{stock.symbol}}">{{stock.symbol}}</option>
