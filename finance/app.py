@@ -224,7 +224,17 @@ def sell():
         symbol = request.form.get("symbol")
         shares = request.form.get("shares")
 
-        current_user_shares = db.execute("SELECT SUM(shares) FROM transactions WHERE user_id = ? and symbol = ? GROUP BY user_id, symbol", session["user_id"], symbol)
+        if not symbol:
+            return apology("must provide symbol", 403)
+
+        if not shares:
+            return apology("must provide shares", 403)
+
+        current_user_shares = db.execute("SELECT SUM(shares) as sum FROM transactions WHERE user_id = ? and symbol = ? GROUP BY user_id, symbol", session["user_id"], symbol)
+
+        if current_user_shares[0]["sum"] < int(shares):
+            return apology("you does not own that much stocks", 403)
+
         return render_template("test.html", symbol=symbol, shares=shares)
 
     # User reached route via GET (as by clicking a link or via redirect)
