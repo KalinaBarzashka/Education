@@ -219,6 +219,7 @@ def register():
 def sell():
     """Sell shares of stock"""
 
+    user_id = session["user_id"]
     # User reached route via POST (as by submitting a form via POST)
     if request.method == "POST":
         symbol = request.form.get("symbol")
@@ -230,7 +231,7 @@ def sell():
         if not shares:
             return apology("must provide shares", 403)
 
-        current_user_shares = db.execute("SELECT SUM(shares) as sum FROM transactions WHERE user_id = ? and symbol = ? GROUP BY user_id, symbol", session["user_id"], symbol)
+        current_user_shares = db.execute("SELECT SUM(shares) as sum FROM transactions WHERE user_id = ? and symbol = ? GROUP BY user_id, symbol", user_id, symbol)
 
         if not current_user_shares:
             return apology("you does not own that much stocks", 403)
@@ -240,11 +241,16 @@ def sell():
 
         current_price = lookup(symbol)["price"]
 
+        total_sold_price = current_price * shares
+
+        # Add money to users account
+        db.execute("UPDATE users SET cash = cash + ? WHERE user_id = ?", current_price, user_id)
+
         return redirect("/")
         return render_template("test.html", symbol=symbol, shares=shares)
 
     # User reached route via GET (as by clicking a link or via redirect)
     else:
-        stocks = db.execute("SELECT symbol, SUM(shares) as shares FROM transactions WHERE user_id = ? GROUP BY user_id, symbol", session["user_id"])
+        stocks = db.execute("SELECT symbol, SUM(shares) as shares FROM transactions WHERE user_id = ? GROUP BY user_id, symbol", user_id)
 
         return render_template("sell.html", stocks=stocks)
