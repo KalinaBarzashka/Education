@@ -51,9 +51,9 @@ def index():
     total_sum = 0
     # add data about symbol full name and total price of the shares that user bought
     for d in data:
-        lookup = lookup(d["symbol"])
-        d["name"] = lookup["name"]
-        d["price"] = lookup["price"]
+        stock_data = lookup(d["symbol"])
+        d["name"] = stock_data["name"]
+        d["price"] = stock_data["price"]
         d["total_price"] = d["shares"] * d["share_price"]
         total_sum = total_sum + d["total_price"]
 
