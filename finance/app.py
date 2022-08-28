@@ -224,7 +224,7 @@ def sell():
         symbol = request.form.get("symbol")
         shares = request.form.get("shares")
 
-        current_user_shares
+        current_user_shares = db.execute("SELECT SUM(shares) FROM transactions WHERE user_id = ? and symbol = ? GROUP BY user_id, symbol", session["user_id"], symbol)
         return render_template("test.html", symbol=symbol, shares=shares)
 
     # User reached route via GET (as by clicking a link or via redirect)
