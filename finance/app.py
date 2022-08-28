@@ -232,6 +232,10 @@ def sell():
 
         current_user_shares = db.execute("SELECT SUM(shares) as sum FROM transactions WHERE user_id = ? and symbol = ? GROUP BY user_id, symbol", session["user_id"], symbol)
 
+        count = current_user_shares.count
+        if count <= 0:
+            return apology("you does not own that much stocks", 403)
+
         if current_user_shares[0]["sum"] < int(shares):
             return apology("you does not own that much stocks", 403)
 
