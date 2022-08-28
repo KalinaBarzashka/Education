@@ -238,6 +238,9 @@ def sell():
         if current_user_shares[0]["sum"] < int(shares):
             return apology("you does not own that much stocks", 403)
 
+        current_price = lookup(symbol)["price"]
+
+        return redirect("/")
         return render_template("test.html", symbol=symbol, shares=shares)
 
     # User reached route via GET (as by clicking a link or via redirect)
