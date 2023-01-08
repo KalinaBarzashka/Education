@@ -1,0 +1,11 @@
+sort1 uses: bubble sort
+
+How do you know?: bubble sort is the fasted algorithm in sorted array of numbers (with bigger amount of numbers), but slowest in reversed and random array of numbers significantly; it uses big O n squared and omega n
+
+sort2 uses: merge sort
+
+How do you know?: merge sort is much faster with random and reversed array of numbers; it uses big theta n log n
+
+sort3 uses: selection sort
+
+How do you know?: selected sort is the slowest algorithm in sorted array of numbers (with bigger amount of numbers in the array); Omega of n squared, better at reversed arrays, but not fastest. It uses big o of n squared
