@@ -1,1 +1,0 @@
-SELECT title FROM movies where YEAR = 2008;

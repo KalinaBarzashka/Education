@@ -1,8 +1,0 @@
-{
-    "files.associations": {
-        "string_view": "c",
-        "stdio.h": "c",
-        "cstddef": "c"
-    },
-    "gitdoc.enabled": true
-}
