@@ -18,4 +18,6 @@ using _01_Recursion;
 //var vector = new int[2];
 //GeneratingCombinations.Generate(set, vector, 0, 0);
 
-EightQueens.Solve();
+//EightQueens.Solve();
+
+FindAllPathsInLabyrinth.Solve();
