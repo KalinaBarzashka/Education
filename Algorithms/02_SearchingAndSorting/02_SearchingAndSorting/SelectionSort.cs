@@ -1,20 +1,20 @@
 ﻿namespace _02_SearchingAndSorting
 {
-    public static class SelectionSort
+    public static class SelectionSort<T> where T : IComparable
     {
         // unstable sorting
-        public static int[] Sort(int[] array)
+        public static T[] Sort(T[] array)
         {
             for (int i = 0; i < array.Length - 1; i++)
             {
-                int currentValue = array[i];
+                T currentValue = array[i];
                 int minValueIndex = -1;
-                int minValue = currentValue;
+                T minValue = currentValue;
 
                 // look for lower value than current value
                 for (int j = i + 1; j < array.Length; j++)
                 {
-                    if (array[j] < minValue)
+                    if (array[j].CompareTo(minValue) < 0)
                     {
                         minValueIndex = j;
                         minValue = array[j];

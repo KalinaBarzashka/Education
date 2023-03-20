@@ -1,18 +1,18 @@
 ﻿namespace _02_SearchingAndSorting
 {
-    public static class InsertionSort
+    public static class InsertionSort<T> where T : IComparable
     {
         // stable sorting
-        public static int[] Sort(int[] array)
+        public static T[] Sort(T[] array)
         {
             for (int i = 1; i < array.Length; i++)
             {
-                int currentValue = array[i];
+                T currentValue = array[i];
                 for (int j = i - 1; j >= 0; j--)
                 {
-                    if (array[j] > currentValue)
+                    if (array[j].CompareTo(currentValue) > 0)
                     {
-                        int tempValue = array[j];
+                        T tempValue = array[j];
                         array[j] = currentValue;
                         array[j + 1] = tempValue;
                         continue;
