@@ -64,9 +64,11 @@ _ZRAND and ZREVRANK return the index position of the element._
 ```
 ZRANGE key start stop [WITHSCORES]
 ZREVRANGE key start stop [WITHSCORES]
+ZRANGEBYSCORE KEY start stop
 ```
 
 _Iterates over a sorted set in order of score. ZRANGE traverses a range of members from the lowest score to the highest score. Start and stop indices are zero-based._
+_Example zrangebyscore hw1-8 (3 +inf_
 
 ### Use cases for sorted sets
 
@@ -87,3 +89,5 @@ SUNIONSTORE
 SDIFF set1 set2 [set...]
 SDIFFSTORE
 ```
+
+### NOTE: Redis does not store empty lists, sets, sorted sets or hashes. Therefore, the key is removed if this condition is met.
