@@ -1,0 +1,26 @@
+[
+  {
+    "sku": "99123-ABC-723",
+    "name": "Men's 100m Final",
+    "disabled_access": "True",
+    "medal_event": "True",
+    "venue": "Olympic Stadium",
+    "category": "Track & Field"
+  },
+  {
+    "sku": "99737-DEF-911",
+    "name": "Women's 4x100m Heats",
+    "disabled_access": "True",
+    "medal_event": "False",
+    "venue": "Olympic Stadium",
+    "category": "Track & Field"
+  },
+  {
+    "sku": "99320-GHI-921",
+    "name": "Womens Judo Qualifying",
+    "disabled_access": "False",
+    "medal_event": "False",
+    "venue": "Nippon Budokan",
+    "category": "Martial Arts"
+  }
+]
