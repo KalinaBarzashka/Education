@@ -26,6 +26,8 @@
 - `MULTI` indicates the start of a transaction. Subsequent commands are queued up in the transaction pending execution
 - `EXEC` is used to excute the queued commands
 - `DISCARD` throws away queued commands
+- `WATCH key [key...]` start watching a key/keys
+- `UNWATCH` stop watching keys
 
 ### Possible errors:
 
@@ -38,8 +40,8 @@
 - Abort transaction if observed key has changed
 - Keyspace notifications
 - `WATCH key [key...]` - declare interest in one or more keys; Must be called before the transaction is started, so decide upfront the keys that needs to be observed
-- Multile `WATCH` command can be executed before the `MULTI`. The effects are cumulative. Subsequent `WATCH` commands does not override previous keys being watched
+- Multile `WATCH key [key...]` command can be executed before the `MULTI`. The effects are cumulative. Subsequent `WATCH key [key...]` commands does not override previous keys being watched
 - When `EXEC` is called the transaction will fail if any watched key have been modified
 - `UNWATCH` is used to remove all watched keys
-- `WATCH` are local to the current client and connection
+- `WATCH key [key...]` are local to the current client and connection
 - After successful `EXEC`, all the watched keys are automatically `UNWATCH`-ed
