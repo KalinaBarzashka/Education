@@ -33,7 +33,7 @@
 - ReJSON and Graph are potential solutions
 - Use hash for each object (Multiple hashes)
 - Multiple hashes + Sets (set is used to store the relationship ends to provides the ability to find related items more simply)
-- Use flattering relationship in a single hash (flatten the hierarchy) - common strategy, use field nameing convention to describe the hierarchy
+- Use flattering relationship in a single hash (flatten the hierarchy) - common strategy, use field naming convention to describe the hierarchy
 
 #### Flattering relationship in a single hash
 
