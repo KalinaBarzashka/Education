@@ -1,0 +1,6 @@
+To import a Redis rdb file to a local instalation using WSL, place the file on local machine, then in wsl use a copy command:
+
+scp /mnt/c/users/kali/downloads/ru101/dump.rdb /var/lib/redis/
+cp /mnt/c/users/kali/downloads/ru101/dump.rdb /var/lib/redis/
+
+The WSL has access to local PC's file system through /mnt/<drive letter>/ directories (or mount points). Case sensitive!
