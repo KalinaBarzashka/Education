@@ -3,6 +3,7 @@
 ### Useful links:
 
 - https://university.redis.com/asset-v1:redislabs+RU101+2018_01+type@asset+block@Handout__Use_case_2_-_Inventory_Control.jpg
+- https://university.redis.com/asset-v1:redislabs+RU101+2018_01+type@asset+block@Handout__Use_case_2_-_Reservations.jpg
 
 ### Requirements:
 

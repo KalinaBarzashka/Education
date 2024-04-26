@@ -17,7 +17,8 @@
             EndPoints = { "127.0.0.1:6379" }, // Redis server endpoint
             Password = "", // Redis server password
             AbortOnConnectFail = false,
-            DefaultDatabase = 0
+            DefaultDatabase = 0,
+            AllowAdmin = true
         };
 
         public static async Task Main(string[] args)
@@ -40,7 +41,7 @@
 
             // flush database before we start
             var connMultiplexer = serviceProvider.GetRequiredService<ConnectionMultiplexer>();
-            var server = connMultiplexer.GetServer(hostAndPort: Options.EndPoints.ToString(), asyncState: true);
+            var server = connMultiplexer.GetServer(hostAndPort: Options.EndPoints.First().ToString(), asyncState: true);
             await server.FlushDatabaseAsync(0);
 
             var dataHandler = serviceProvider.GetRequiredService<DataHandler>();
@@ -48,14 +49,40 @@
             // create customers
             await dataHandler.CreateCustomers(customers);
 
+            var requestor = "";
+
             // --------------------------------------------------------------------------------------------- //
             // Test function Check & purchase method
+            Console.WriteLine("==Test 1: Check stock levels & purchase");
             Console.WriteLine("Create events with 10 tickets available");
             await dataHandler.CreateEvents(events, available: "10");
+            
             Console.WriteLine("== Request 5 tickets, success");
-            var requestor = "bill";
-            var event_requested = "123-ABC-723";
-            await dataHandler.CheckAvailabilityAndPurchase(requestor, event_requested, "5");
+            requestor = "bill";
+            var eventRequested = "123-ABC-723";
+            await dataHandler.CheckAvailabilityAndPurchase(requestor, eventRequested, "5");
+            await dataHandler.PrintEventDitails(eventRequested);
+            
+            Console.WriteLine("== Request 6 ticket, failure because of insufficient inventory");
+            requestor = "mary";
+            await dataHandler.CheckAvailabilityAndPurchase(requestor, eventRequested, "6");
+            await dataHandler.PrintEventDitails(eventRequested);
+            // --------------------------------------------------------------------------------------------- //
+            // Test function reserve & credit auth
+            Console.WriteLine("==Test 2: Reserve stock, perform credit auth and complete purchase");
+            Console.WriteLine("Create events with 10 tickets available");
+            await dataHandler.CreateEvents(events, available: "10");
+
+            Console.WriteLine("== Reserve & purchase 5 tickets");
+            requestor = "jamie";
+            var reserveEventRequested = "737-DEF-911";
+            await dataHandler.Reserve(requestor, reserveEventRequested, "5");
+            await dataHandler.PrintEventDitails(reserveEventRequested);
+
+            Console.WriteLine("== Reserve 5 tickets, failure on auth, return tickets to inventory");
+            requestor = "joan";
+            await dataHandler.Reserve(requestor, reserveEventRequested, "5");
+            await dataHandler.PrintEventDitails(reserveEventRequested);
         }
     }
 }
