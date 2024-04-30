@@ -211,6 +211,86 @@
             Console.WriteLine("Purchase complete!");
         }
 
+        public async Task CreateExpiredReservation(string eventSku, string tier = "General")
+        {
+            DateTimeOffset currentTime = DateTime.Now;
+            DateTimeOffset unixEpoch = new DateTimeOffset(1970, 1, 1, 0, 0, 0, TimeSpan.Zero);
+            long currentTimeInSeconds = (long)(currentTime - unixEpoch).TotalSeconds;
+
+            var tickets = new HashEntry[2];
+            tickets[0] = new HashEntry($"available:{tier}", 485);
+            tickets[1] = new HashEntry($"held:{tier}", 15);
+
+            var holds = new HashEntry[9];
+            holds[0] = new HashEntry("qty:VPIR6X", 3);
+            holds[1] = new HashEntry($"tier:VPIR6X", tier);
+            holds[2] = new HashEntry($"ts:VPIR6X", currentTimeInSeconds - 16);
+            holds[3] = new HashEntry("qty:B1BFG7", 5);
+            holds[4] = new HashEntry($"tier:B1BFG7", tier);
+            holds[5] = new HashEntry($"ts:B1BFG7", currentTimeInSeconds - 22);
+            holds[6] = new HashEntry("qty:UZ1EL0", 7);
+            holds[7] = new HashEntry($"tier:UZ1EL0", tier);
+            holds[8] = new HashEntry($"ts:UZ1EL0", currentTimeInSeconds - 30);
+
+            var key = $"ticket_hold:{eventSku}";
+            await this.db.HashSetAsync(key, holds);
+
+            var eventKey = $"event:{eventSku}";
+            await this.db.HashSetAsync(eventKey, tickets);
+        }
+
+        public async Task CheckReservations(string eventSku)
+        {
+            var tier = "General";
+            var hashKey = $"ticket_hold:{eventSku}";
+            var eventKey = $"event:{eventSku}";
+
+            while (true)
+            {
+                await this.ExpireReservation(eventSku);
+                var outstanding = await this.db.HashGetAsync(hashKey, new RedisValue[] { "qty:VPIR6X", "qty:B1BFG7", "qty:UZ1EL0" });
+                var available = await this.db.HashGetAsync(eventKey, $"available:{tier}");
+
+                Console.WriteLine($"Event: {eventSku}, Available:{available}, Reservations:{outstanding[0]};{outstanding[1]};{outstanding[2]}");
+
+                // break if all items in outstanding list are None
+                if (!outstanding[0].HasValue && !outstanding[1].HasValue && !outstanding[1].HasValue)
+                {
+                    break;
+                }
+                else
+                {
+                    Thread.Sleep(1000);
+                }
+            }
+        }
+
+        // check if any reservation has exceeded the cutoff time; if any have, then backout the reservation and return the inventory back to the pool
+        public async Task ExpireReservation(string eventSku, int cutoffTimeInSeconds = 30)
+        {
+            DateTimeOffset currentTime = DateTime.Now;
+            DateTimeOffset unixEpoch = new DateTimeOffset(1970, 1, 1, 0, 0, 0, TimeSpan.Zero);
+            long currentCutoffTimeInSeconds = (long)(currentTime - unixEpoch).TotalSeconds - cutoffTimeInSeconds;
+            var key = $"ticket_hold:{eventSku}";
+            long cursor = 0;
+            do
+            {
+                // constant time complexity O(1)
+                var scanResult = this.db.HashScan(key, pattern: "ts:*", pageSize: 1000, cursor: cursor);
+
+                foreach (var item in scanResult)
+                {
+                    if ((long)item.Value < currentCutoffTimeInSeconds)
+                    {
+                        var orderId = item.Name.ToString().Split(":")[1];
+                        await this.BackoutHold(eventSku, orderId.ToString());
+                    }
+                }
+
+                cursor = ((IScanningCursor)scanResult).Cursor;
+            } while (cursor != 0);
+        }
+
         public async Task PrintEventDitails(string eventSku)
         {
             var eventKey = $"event:{eventSku}";

@@ -67,22 +67,38 @@
             requestor = "mary";
             await dataHandler.CheckAvailabilityAndPurchase(requestor, eventRequested, "6");
             await dataHandler.PrintEventDitails(eventRequested);
+        
             // --------------------------------------------------------------------------------------------- //
+            Console.WriteLine();
             // Test function reserve & credit auth
             Console.WriteLine("==Test 2: Reserve stock, perform credit auth and complete purchase");
             Console.WriteLine("Create events with 10 tickets available");
             await dataHandler.CreateEvents(events, available: "10");
-
+        
             Console.WriteLine("== Reserve & purchase 5 tickets");
             requestor = "jamie";
             var reserveEventRequested = "737-DEF-911";
             await dataHandler.Reserve(requestor, reserveEventRequested, "5");
             await dataHandler.PrintEventDitails(reserveEventRequested);
-
+        
             Console.WriteLine("== Reserve 5 tickets, failure on auth, return tickets to inventory");
             requestor = "joan";
             await dataHandler.Reserve(requestor, reserveEventRequested, "5");
             await dataHandler.PrintEventDitails(reserveEventRequested);
+
+            // --------------------------------------------------------------------------------------------- //
+            Console.WriteLine();
+            // Test function expired reservations
+            Console.WriteLine("==Test 3: Back out reservations when expiration threshold exceeded");
+            Console.WriteLine("Create events");
+            await dataHandler.CreateEvents(events);
+
+            // Create expired reservations for the Event
+            Console.WriteLine("== Create ticket holds, expire > 30 sec, return tickets to inventory");
+            var expiredReserveEventRequested = "320-GHI-921";
+            await dataHandler.CreateExpiredReservation(expiredReserveEventRequested);
+
+            await dataHandler.CheckReservations(expiredReserveEventRequested);
         }
     }
 }
