@@ -1,0 +1,23 @@
+{
+  "venue": "Makuhari Messe",
+  "capacity": 6000,
+  "events": [
+    {
+      "name": "Fencing",
+      "hash": "HDSM-OJNQ-UBFZ-AKBM"
+    },
+    {
+      "name": "Taekwondo",
+      "hash": "QTOP-FKNS-LMGQ-JHOF"
+    },
+    {
+      "name": "Wrestling",
+      "hash": "QBGH-ARMD-DFOY-JLLW"
+    }
+  ],
+  "geo": {
+    "long": 140.034722,
+    "lat": 35.648333
+  },
+  "transit": [ "Keiyo Line" ]
+}

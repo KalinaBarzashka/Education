@@ -1,0 +1,19 @@
+{
+  "venue": "International Stadium Yokohama",
+  "capacity": 70000,
+  "events": [
+    {
+      "name": "Football",
+      "hash": "VGCM-ESPF-MXJZ-XKEX"
+    }
+  ],
+  "geo": {
+    "long": 139.606247,
+    "lat": 35.510044
+  },
+  "transit": [
+    "Tokaido Shinkansen",
+    "Yokohama Line",
+    "Blue Line"
+  ]
+}

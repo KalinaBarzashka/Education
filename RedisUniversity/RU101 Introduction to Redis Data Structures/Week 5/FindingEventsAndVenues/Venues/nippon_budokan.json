@@ -1,0 +1,23 @@
+{
+  "venue": "Nippon Budokan",
+  "capacity": 12000,
+  "events": [
+    {
+      "name": "Judo",
+      "hash": "AGHC-TXLI-ZTFN-ZHBP"
+    },
+    {
+      "name": "Karate",
+      "hash": "DDZE-PPZQ-PLNO-XBNI"
+    }
+  ],
+  "geo": {
+    "long": 139.75,
+    "lat": 35.693333
+  },
+  "transit": [
+    "Toei Shinjuku Line",
+    "Tozai Line",
+    "Hanzomon Line"
+  ]
+}

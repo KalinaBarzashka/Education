@@ -1,0 +1,15 @@
+{
+  "venue": "Tokyo Tatsumi International Swimming Center",
+  "capacity": 5000,
+  "events": [
+    {
+      "name": "Water polo",
+      "hash": "SGHI-AMGC-EFZA-RAEZ"
+    }
+  ],
+  "geo": {
+    "long": 139.818943,
+    "lat": 35.647668
+  },
+  "transit": [ "Keiyo Line", "Rinkai Line", "Yurakucho Line" ]
+}
