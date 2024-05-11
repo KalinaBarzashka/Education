@@ -25,8 +25,9 @@
 - GEOADD will fail is we use coordinates out of the limits above
 - Sorted sets are the data type used to store geospatial objects
 - With ZUNIONSTORE and ZINTERSTORE command will sum up the scores of the elements, and for geospatial data, this would cause the point to move! Retaining the Geospatial point is simple, you will just need to use the MIN or MAX aggregate operator
-- There is no specific command for removal. Use ZREM!
+- There is no specific command for removal. Use ZREM! DEL or UNLINK would remove the entire key.
 - Inspect geospatial objects stored in a key with ZRANGE - list a range of members
+- Redis computes a Geohash from the Latitude and Longitude. This is a 52 bit number, which can be safely stored in a score of a Sorted Set (which is a double).
 
 ### Some commands
 
