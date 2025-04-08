@@ -4,7 +4,7 @@ import Order from "./Order";
 import PizzaOfTheDay from "./PizzaOfTheDay";
 
 const App = () => {
-  return(
+  return (
     <StrictMode>
       <div>
         <h1 className="logo">Padre Gino's - Order Now</h1>
@@ -12,7 +12,7 @@ const App = () => {
         <PizzaOfTheDay />
       </div>
     </StrictMode>
-  )
+  );
 };
 
 const container = document.getElementById("root");
